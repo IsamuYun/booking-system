@@ -1,0 +1,272 @@
+/* pages/index/index.wxss */
+page {
+  background-color: #f6f6f6;
+}
+
+.container {
+  padding: 20px;
+}
+
+/* --- 日期选择区域 --- */
+.header-section {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+.date-label {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 10px;
+}
+
+.date-picker-box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #f0f9eb; /* 浅绿色背景 */
+  padding: 15px;
+  border-radius: 8px;
+  border: 1px solid #07c160;
+}
+
+.date-text {
+  font-size: 18px;
+  font-weight: bold;
+  color: #07c160;
+}
+
+.arrow-icon {
+  color: #07c160;
+}
+
+/* --- 房间列表区域 --- */
+.room-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px; /* 卡片之间的间距 */
+}
+
+.room-card {
+  display: flex;
+  align-items: center;
+  padding: 25px 20px; /* 大内边距，形成大按钮 */
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  transition: all 0.2s;
+  position: relative;
+  overflow: hidden;
+}
+
+/* 点击时的按压效果 */
+
+
+/* 普通房间样式 */
+.card-normal {
+  background: linear-gradient(135deg, #ffffff 0%, #f9f9f9 100%);
+  border-left: 6px solid #3b82f6; /* 蓝色条 */
+}
+
+/* 多功能房间样式 - 稍微显眼一点 */
+.card-multi {
+  background: linear-gradient(135deg, #fffcf0 0%, #fff7d1 100%);
+  border-left: 6px solid #f59e0b; /* 橙色条 */
+}
+
+.room-icon {
+  font-size: 32px;
+  margin-right: 15px;
+}
+
+.room-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.room-name {
+  font-size: 18px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 0;
+  margin-right: 8px;
+}
+
+.room-tag {
+  font-size: 12px;
+  color: #888;
+  background-color: rgba(0,0,0,0.05);
+  padding: 2px 6px;
+  border-radius: 4px;
+  align-self: flex-start;
+}
+
+/* 房间卡片 - 增加头部布局 */
+.room-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+/* 可用时间段区域 */
+.availability-info {
+  font-size: 9px;
+  color: #777;
+}
+
+.tags-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin-top: 4px;
+}
+
+.time-tag {
+  background-color: rgba(7, 193, 96, 0.1); /* 浅绿色背景 */
+  color: #07c160;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 9px;
+}
+
+.status-full {
+  color: #ff4d4f;
+  font-weight: bold;
+}
+
+/* 满房时的卡片样式 (变灰) */
+.card-full {
+  opacity: 0.7;
+  border-left-color: #999 !important;
+  background: #f0f0f0 !important;
+}
+
+
+.action-arrow {
+  font-size: 20px;
+  color: #ccc;
+  font-weight: bold;
+}
+
+/* --- 顶部消息条 --- */
+.message-bar {
+  text-align: center;
+  padding: 10px;
+  font-size: 14px;
+  border-radius: 8px;
+  margin-bottom: 15px;
+  animation: fadeIn 0.3s;
+}
+.message-bar.success {
+  background-color: #e6ffed; /* 浅绿背景 */
+  color: #07c160;
+  border: 1px solid #b7eb8f;
+}
+.message-bar.error {
+  background-color: #fff1f0; /* 浅红背景 */
+  color: #ff4d4f;
+  border: 1px solid #ffccc7;
+}
+
+/* --- 弹窗样式 (Modal) --- */
+.modal-mask {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.5); /* 半透明黑背景 */
+  z-index: 1000;
+  display: flex;
+  align-items: center;     /* 垂直居中 */
+  justify-content: center; /* 水平居中 */
+}
+
+.modal-content {
+  width: 80%;
+  background: #fff;
+  border-radius: 16px;
+  padding: 20px;
+  z-index: 1001;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 10px;
+}
+
+.modal-title {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.close-btn {
+  font-size: 24px;
+  color: #999;
+  padding: 0 10px;
+}
+
+.form-item {
+  margin-bottom: 15px;
+}
+
+.label {
+  display: block;
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 5px;
+}
+
+.picker-input {
+  border: 1px solid #ddd;
+  padding: 10px;
+  border-radius: 6px;
+  font-size: 16px;
+}
+
+.sub-text {
+  font-size: 12px;
+  color: #999;
+  margin-left: 5px;
+}
+
+.submit-btn {
+  background-color: #07c160;
+  color: white;
+  margin-top: 20px;
+  border-radius: 25px;
+}
+
+/* 简单的淡入动画 */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* 右侧按钮区域 */
+.action-picker {
+  /* 确保 picker 撑满按钮区域 */
+  display: inline-block;
+}
+
+.action-btn {
+  background-color: #07c160;
+  color: white;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: bold;
+  box-shadow: 0 2px 5px rgba(7, 193, 96, 0.3);
+  /* 增加 flex 居中，防止文字偏 */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+

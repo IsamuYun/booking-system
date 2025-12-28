@@ -1,0 +1,87 @@
+<view class="container">
+  
+  <view class="header-section">
+    <view class="date-label">请选择预约日期：</view>
+    <picker mode="date" value="{{selectedDate}}" start="{{selectedDate}}" bindchange="onDateChange">
+      <view class="date-picker-box">
+        <text class="date-text">{{selectedDate}}</text>
+        <text class="arrow-icon">▼</text>
+      </view>
+    </picker>
+  </view>
+
+  <view class="message-bar {{msgType}}" wx:if="{{msgContent}}">
+    {{msgContent}}
+  </view>
+
+  <view class="room-list">
+    <view
+      class="room-card {{item.type === '多功能室' ? '多功能室' : '咨询室'}}"
+      wx:for="{{roomList}}"
+      wx:key="id"
+      bindtap="openBookingModal"
+      data-room="{{item}}"
+    >
+      <view class="room-icon">
+        {{item.type === '多功能室' ? '🌟' : '🏠'}}
+      </view>
+      <view class="room-info">
+        <text class="room-name">{{item.name}}</text>
+        <text class="room-tag">{{item.type === '多功能室' ? '多功能室' : '咨询室'}}</text>
+      </view>
+
+      <view class="action-btn" style="background: #ccc" wx:if="{{item.is_full}}">已约满</view>
+
+      <button wx:else
+        class="action-picker"
+        bindchange="onTimeSelect"
+        data-room="{{item}}"
+      >
+        <view class="action-btn">预订▼</view>
+      </button>
+    </view>
+
+    <view class="modal-mask" wx:if="{{showModal}}" bindtap="closeModal">
+      <view class="modal-content" catchtap="preventProp">
+        <view class="modal-header">
+          <text class="modal-title">预订 {{currentRoom.name}}</text>
+          <text class="close-btn" bindtap="closeModal">x</text>
+        </view>
+
+        <view class="form-body">
+          <view class="form-item">
+            <text class="label">咨询师</text>
+            <picker 
+              range="{{counselorList}}" 
+              range-key="name"
+              value="{{selectedCounselorIndex}}"
+              bindchange="onCounselorChange">
+              <view class="picker-input">
+                {{counselorList[selectedCounselorIndex].name}}
+                <text class="sub-text">({{counselorList[selectedCounselorIndex].type}})</text>
+              </view>
+            </picker>
+          </view>
+
+          <view class="form-item">
+            <text class="label">开始时间</text>
+            <picker range="{{currentRoom.available_slots_text}}" value="{{selectedStartIndex}}" bindchange="onStartChange">
+              <view class="picker-input">{{currentRoom.available_slots_text[selectedStartIndex]}}</view>
+            </picker>
+          </view>
+
+          <view class="form-item">
+            <text class="label">结束时间</text>
+            <picker range="{{currentRoom.available_slots_text}}" value="{{selectedEndIndex}}" bindchange="onEndChange">
+              <view class="picker-input">{{currentRoom.available_slots_text[selectedEndIndex]}}</view>
+            </picker>
+          </view>
+
+          <button class="submit-btn" bindtap="submitBooking">确认预订</button>
+        </view>
+      </view>
+    </view>
+    
+  </view>
+
+</view>
