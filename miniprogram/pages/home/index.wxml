@@ -1,0 +1,42 @@
+<!--pages/home/index.wxml-->
+<view class="container">
+  <view class="welcome-section">
+    <view class="title">你好，咨询师</view>
+  </view>
+
+  <image src="../../images/psy-therapy.png" style="width: 720rpx; height: 400rpx;" mode="widthFix"></image>
+
+  <view class="menu-grid">
+    <view class="menu-card main-card" bindtap="goToBooking">
+      <view class="icon">📖</view>
+      <view class="text-group">
+        <text class="card-title">开始预约</text>
+        <text class="card-desc">预约咨询室</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="menu-card sub-card" bindtap="goToMyBooking">
+    <view class="icon">🗓️</view>
+    <view class="text-group">
+      <text class="card-title">我的预约</text>
+      <text class="card=desc">查看预约记录</text>
+    </view>
+  </view>
+
+  <view class="menu-card sub-card" bindtap="goToRecurring">
+    <view class="">🗃️</view>
+    <view class="text-group">
+      <text class="card-title">定期预约</text>
+      <text class="card=desc">设定定期预约</text>
+    </view>
+  </view>
+
+  <view class="menu-card admin-card" bindtap="goToAdmin">
+    <view class="icon">🛠</view>
+    <view class="text-group">
+      <text class="card-title">管理后台</text>
+      <text class="card-desc">仅限管理员使用</text>
+    </view>
+  </view>
+</view>

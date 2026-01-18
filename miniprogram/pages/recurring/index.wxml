@@ -1,0 +1,43 @@
+<view class="container">
+  <view class="back-bar" bindtap="goBack"><text>‹ 返回</text></view>
+  
+  <view class="section-title">添加定期预约</view>
+  <view class="form-card">
+    <picker range="{{counselorList}}" range-key="name" value="{{selCounselorIdx}}" bindchange="bindCounselorChange">
+      <view class="picker-row">咨询师：{{counselorList[selCounselorIdx].name}}</view>
+    </picker>
+    <picker range="{{roomList}}" range-key="name" value="{{selRoomIdx}}" bindchange="bindRoomChange">
+      <view class="picker-row">房间：{{roomList[selRoomIdx].name}}</view>
+    </picker>
+    <picker range="{{days}}" value="{{selDayIndex}}" bindchange="bindDayChange">
+      <view class="picker-row">周期：{{days[selDayIndex]}}</view>
+    </picker>
+    <view class="time-row">
+      <picker range="{{times}}" value="{{selStartIdx}}" bindchange="bindStartChange">
+        <view class="time-box">{{times[selStartIdx]}}</view>
+      </picker>
+      <text>-</text>
+      <picker range="{{times}}" value="{{selEndIdx}}" bindchange="bindEndChange">
+        <view class="time-box">{{times[selEndIdx]}}</view>
+      </picker>
+    </view>
+    
+    <button class="add-btn" bindtap="addRule">+ 添加规则</button>
+  </view>
+
+  <view class="section-title">现有规则列表</view>
+  <view class="rule-list">
+    <view class="rule-item" wx:for="{{ruleList}}" wx:key="id">
+      <view class="rule-info">
+        <text class="rule-day">{{item.dayStr}}</text>
+        <text class="rule-time">{{item.start_time}} - {{item.end_time}}</text>
+        <text class="rule-detail">{{item.Counselor.name}} @ {{item.Room.name}}</text>
+      </view>
+      <view class="del-btn" bindtap="deleteRule" data-id="{{item.id}}">删除</view>
+    </view>
+  </view>
+
+  <view class="footer">
+    <button class="gen-btn" bindtap="generate">⚡ 生成未来30天预订</button>
+  </view>
+</view>

@@ -6,10 +6,10 @@ exports.wechatLogin = async (req, res) => {
   const { code } = req.body;
   const appId = 'YOUR_APP_ID';
   const appSecret = 'YOUR_APP_SECRET';
-  
+
   // 1. 请求微信服务器换取 openid
   const url = `https://api.weixin.qq.com/sns/jscode2session?appid=${appId}&secret=${appSecret}&js_code=${code}&grant_type=authorization_code`;
-  
+
   try {
     const { data } = await axios.get(url);
     const { openid } = data;
@@ -26,4 +26,6 @@ exports.wechatLogin = async (req, res) => {
   } catch (error) {
     res.status(500).json({ error: 'Login failed' });
   }
+
+  // 
 };

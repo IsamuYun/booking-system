@@ -1,8 +1,11 @@
 <view class="container">
-  
+  <view class="back-bar" bindtap="goBack">
+    <text class="back-btn">返回首页</text>
+  </view>
+
   <view class="header-section">
     <view class="date-label">请选择预约日期：</view>
-    <picker mode="date" value="{{selectedDate}}" start="{{selectedDate}}" bindchange="onDateChange">
+    <picker mode="date" value="{{selectedDate}}" start="2025-12-1" bindchange="onDateChange">
       <view class="date-picker-box">
         <text class="date-text">{{selectedDate}}</text>
         <text class="arrow-icon">▼</text>

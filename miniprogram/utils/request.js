@@ -1,6 +1,6 @@
 // 真机调试需勾选"不校验合法域名"
-//const BASE_URL = "http://localhost:3000/api";
-const BASE_URL = "http://192.168.0.79:5001";
+const BASE_URL = "http://192.168.0.79:3000";
+//const BASE_URL = "https://booking-system-211526-7-1393385077.sh.run.tcloudbase.com";
 
 function request(url, method = "GET", data = {}) {
     const token = wx.getStorageSync('token');

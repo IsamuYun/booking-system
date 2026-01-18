@@ -1,10 +1,35 @@
-/**app.wxss**/
+/* 全局的样式文件 */
 .container {
   height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  padding: 200rpx 0;
+  padding: 0;
   box-sizing: border-box;
-} 
+}
+
+/* 通用的顶部返回栏样式 */
+.back-bar {
+  padding: 10px 15px;
+  background-color: #FFF;
+  display: block;
+  width: 100%;
+  align-items: left;
+  border-bottom: 1px solid #F0F0F0;
+  margin-bottom: 10px;
+}
+
+.back-btn {
+  font-size: 14px;
+  color: #333;
+  display: flex;
+  align-items: center;
+}
+
+.back-icon {
+  font-size: 18px;
+  margin-right: 4px;
+  font-weight: bold;
+  color: #666;
+}

@@ -1,0 +1,135 @@
+/* pages/admin/index.wxss */
+page {
+  background-color: #f5f7fa;
+}
+
+.container {
+  padding-bottom: 30px;
+}
+
+/* 顶部日期栏 */
+.header-section {
+  background: #fff;
+  padding: 15px 20px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+.date-display {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  color: #333;
+}
+
+.date-value {
+  font-weight: bold;
+  margin: 0 8px;
+  color: #07c160;
+}
+
+/* 列表容器 */
+.list-container {
+  padding: 20px;
+}
+
+.empty-state {
+  text-align: center;
+  color: #999;
+  margin-top: 50px;
+  font-size: 14px;
+}
+
+/* 卡片样式 */
+.booking-card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 15px;
+  margin-bottom: 15px;
+  display: flex;
+  align-items: center;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+  position: relative;
+  overflow: hidden;
+}
+
+/* 左侧装饰条 */
+.booking-card::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background-color: #1890ff; /* 蓝色侧边条 */
+}
+
+/* 左侧时间 */
+.card-left {
+  width: 80px;
+  border-right: 1px solid #eee;
+  margin-right: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.time-text {
+  font-size: 14px;
+  font-weight: bold;
+  color: #333;
+  text-align: center;
+}
+
+/* 中间详情 */
+.card-center {
+  flex: 1;
+}
+
+.room-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 6px;
+}
+
+.room-tag {
+  font-size: 14px;
+  font-weight: bold;
+  color: #333;
+}
+
+.price {
+  font-size: 12px;
+  color: #999;
+}
+
+.info-row {
+  font-size: 13px;
+  color: #666;
+  margin-bottom: 4px;
+}
+
+.user {
+  color: #555;
+}
+
+.counselor {
+  color: #07c160; /* 咨询师名字标绿 */
+}
+
+/* 右侧按钮 */
+.card-right {
+  margin-left: 10px;
+}
+
+.cancel-btn {
+  background-color: #fff1f0;
+  color: #ff4d4f;
+  border: 1px solid #ffccc7;
+  font-size: 12px;
+  padding: 6px 12px;
+  border-radius: 20px;
+}

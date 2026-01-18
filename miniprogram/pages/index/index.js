@@ -36,6 +36,10 @@ Page({
     this.fetchCounselors();
   },
 
+  goBack() {
+    wx.navigateBack();
+  },
+
   onShow() {
     // 每次显示页面时，可以刷新一下房间状态
   },

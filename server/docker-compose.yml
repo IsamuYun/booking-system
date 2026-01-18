@@ -1,0 +1,20 @@
+version: '3'
+
+services:
+  booking-server:
+    build: .
+    container_name: booking-server
+    restart: always
+    ports:
+      - "3000:3000"
+    environment:
+      # 告诉代码，数据库文件存在容器内的 /app/data 目录里
+      - DB_PATH=/app/data/database.sqlite
+      # 可以在这里添加 AppID 等敏感信息
+      # - WECHAT_APP_ID=xxxx
+    volumes:
+      # 【核心配置】数据持久化
+      # 把宿主机(你电脑)当前目录下的 ./data 文件夹，挂载到容器内的 /app/data
+      - ./data:/app/data
+
+  

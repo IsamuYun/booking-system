@@ -8,8 +8,29 @@ Page({
    * Page initial data
    */
   data: {
-    userInfo: {}
+    list: [],
   },
+
+  onShow() {
+    this.fetchMyBookings();
+  },
+
+  goBack() {
+    wx.navigateBack();
+  },
+
+  async fetchMyBookings() {
+    try {
+      // 后端接口是POST /bookings/:user_id
+      const res = await request.get("/bookings");
+      this.setData({ list: res.data || [] });
+    }
+    catch (err) {
+      console.error(err);
+    }
+  },
+
+  
 
   /**
    * Lifecycle function--Called when page load

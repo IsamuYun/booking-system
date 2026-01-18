@@ -8,10 +8,10 @@ function getTimeStringFromSlot(slot) {
 }
 
 exports.createBooking = async (req, res) => {
-    const { 
-        room_id, 
+    const {
+        room_id,
         counselor_id,
-        booking_date, 
+        booking_date,
         start_time_slot,
         end_time_slot
     } = req.body;
@@ -52,7 +52,7 @@ exports.createBooking = async (req, res) => {
                 [Op.and]: [
                     // 检查时间段冲突
                     {
-                        start_time_slot: { [Op.lt]: end_time_slot } 
+                        start_time_slot: { [Op.lt]: end_time_slot }
                     },
                     {
                         end_time_slot: { [Op.gt]: start_time_slot }
@@ -64,7 +64,7 @@ exports.createBooking = async (req, res) => {
         if (conflictBooking) {
             return res.status(409).json({ message: '该时段的房间已经被预订' });
         }
-        
+
         console.log('创建预约:', userId, room_id, counselor_id, counselor.name, counselor.type, booking_date, start_time_slot, end_time_slot, booking_fee);
 
         // 2. 创建预约
@@ -81,7 +81,7 @@ exports.createBooking = async (req, res) => {
             user_id: userId,
             counselor_id: counselor_id,
             room_id: room_id,
-            
+
         });
 
         res.json({ success: true, data: newBooking });
@@ -89,5 +89,27 @@ exports.createBooking = async (req, res) => {
     catch (error) {
         console.error('预约失败:', error);
         res.status(500).json({ error: '预约失败' });
+    }
+};
+
+exports.getBookingsByUser = async (req, res) => {
+    try {
+        const userId = req.user.id;
+        const bookings = await Booking.findAll({
+            where: { user_id: userId },
+            include: [
+                { model: Room, attributes: ['id', 'name', 'type'] },
+                { model: Counselor, attributes: ['id', 'name', 'type'] }
+            ],
+            order: [
+                ['booking_date', 'DESC'],
+                ['start_time_slot', 'DESC']
+            ]
+        });
+        res.json({ success: true, data: bookings });
+    }
+    catch (error) {
+        console.error('获取预约失败:', error);
+        res.status(500).json({ error: '获取预约失败' });
     }
 };

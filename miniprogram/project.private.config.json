@@ -3,7 +3,7 @@
   "projectname": "miniprogram",
   "setting": {
     "compileHotReLoad": true,
-    "skylineRenderEnable": true,
+    "skylineRenderEnable": false,
     "urlCheck": false,
     "coverView": true,
     "lazyloadPlaceholderEnable": false,
@@ -18,5 +18,5 @@
     "checkInvalidKey": true,
     "ignoreDevUnusedFiles": true
   },
-  "libVersion": "3.0.2"
+  "libVersion": "3.13.0"
 }

@@ -1,0 +1,49 @@
+<!--pages/admin/index.wxml-->
+<view class="container">
+  <view class="back-bar" bindtap="goBack">
+    <text class="back-btn">返回首页</text>
+  </view>
+
+  <picker mode="date" value="{{selectedDate}}" bindchange="onDateChange">
+    <view class="header">
+      <text>📅 预约日期: {{selectedDate}}</text>
+      <text class="arrow">⬇️</text>
+    </view>
+  </picker>
+
+  <view class="list-container">
+    <view wx:if="{{bookingList.length === 0 && !loading}}" class="empty-state">
+      <text>📭本日无预约记录</text>
+    </view>
+
+    <block wx:else>
+      <view class="booking-card" wx:for="{{bookingList}}" wx:key="id">
+        <view class="card-left">
+          <text class="time-text">{{item.start_time}}-{{item.end_time}}</text>
+        </view>
+        <view class="card-center">
+          <view class="room-row">
+            <text class="room-tag">{{item.room_name}}</text>
+          </view>
+          <view class="info-row">
+            <text class="user">{{item.counselor_type}}</text>
+          </view>
+          <view class="info-row">
+            <text class="counselor">{{item.counselor_name}}</text>
+          </view>
+        </view>
+
+        <view class="card-right">
+          <view class="cancel-btn"
+                bindtap="handleCancel"
+                data-id="{{item.id}}"
+                data-name="{{item.booker_name}}">
+            <text>取消</text>
+          </view>
+        </view>
+
+      </view>
+    </block>
+  </view> 
+  
+</view>

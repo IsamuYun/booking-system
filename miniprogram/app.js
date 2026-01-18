@@ -56,5 +56,10 @@ App({
   globalData: {
     userInfo: null,
     isLoggedIn: false,
+  },
+  /*
+  goBack() {
+    wx.navigationBack();
   }
+  */
 })

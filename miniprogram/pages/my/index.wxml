@@ -1,21 +1,25 @@
 <!--pages/my/index.wxml-->
 <view class="container">
-  <view class="user-info">
-    <block wx:if="{{userInfo.nickname}}">
-      <view class="avatar-placeholder">{{userInfo.nickname[0]}}</view>
-      <text class="nickname">你好，{{userInfo.nickname}}</text>
-      <text class="role">身份: {{userInfo.role === 'admin' ? '管理员' : '咨询师|访客'}}</text>
-    </block>
-
-    <block wx:else>
-      <view class="avatar-placeholder">?</view>
-      <text class="nickname">欢迎来到咨询室</text>
-      <button class="login-btn" bindtap="updateUserProfile">同步微信昵称</button>
-    </block>
+  <view class="back-bar" bindtap="goBack">
+    <text class="back-btn">返回首页</text>
   </view>
 
-  <view class="menu-list">
-    <view class="menu-item">我的预约记录</view>
-    <view class="menu-item">联系客服</view>
-  </view>
+  <view class="page-title">我的预约记录</view>
+
+  <block wx:if="{{list.length === 0}}">
+    <view class="empty">暂无记录</view>
+  </block>
+
+  <block wx:else>
+    <view class="booking-item" wx:for="{{list}}" wx:key="id">
+      <view class="row-main">
+        <text class="room-name">{{item.Room.name}}</text>
+        <text class="status {{item.status}}">{{item.status === "booked" ? "已预约" : "已取消" }}</text>
+      </view>
+      <view class="row-sub">
+        <text>📅{{item.date}}</text>
+        <text>⏰{{item.start_time}} - {{item.end_time}}</text>
+      </view>
+    </view>
+  </block>
 </view>

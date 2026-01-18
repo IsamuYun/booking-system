@@ -1,0 +1,115 @@
+/* pages/home/index.wxss */
+page {
+  background-color: #FFFFFF;
+}
+
+.container {
+  padding: 30px 20px;
+}
+
+/* 顶部欢迎区 */
+.welcome-section {
+  display: inline-block;
+  width: 100%;
+  text-align: left;
+  margin-top: 40rpx;
+  margin-bottom: 40rpx;
+}
+
+.title {
+  font-size: 14px;
+  font-weight: bold;
+  color: #333;
+  text-align: left;
+  padding-top: 20rpx;
+
+}
+
+.subtitle {
+  font-size: 14px;
+  color: #999;
+}
+
+/* 菜单网络 */
+.menu-grid {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* 卡片通用格式 */
+.menu-card {
+  position: relative;
+  width: 280rpx;
+  height: 240rpx;
+  background: linear-gradient(135deg, #e6f7ff 0%, #ffffff 100%);
+  border: 1px solid #91d5ff;
+  color: #1890ff;
+  border-radius: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  transition: all 0.2s;
+  background: #FFF;
+  opacity: 1;
+}
+
+/* SkyLine不支持 
+.menu-card:active {
+  transform: scale(0.98);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+*/
+
+.icon {
+  font-size: 32px;
+  margin-right: 10px;
+}
+
+.text-group {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.card-title {
+  font-size: 16px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 4px;
+}
+
+.card-desc {
+  font-size: 12px;
+  color: #999;
+}
+
+.arrow {
+  font-size: 20px;
+  color: #CCC;
+  font-weight: bold;
+}
+
+/* 差异化配色 */
+/* 预约按钮 - 强调色 */
+.main-card {
+  background: linear-gradient(135deg, #e6ffed 0%, #ffffff 100%);
+  border: 1px solid #b7eb8f;
+}
+.main-card .card-title { color: #07c160; }
+
+/* 我的预约 - 蓝色系 */
+.sub-card {
+  background: linear-gradient(135deg, #e6f7ff 0%, #ffffff 100%);
+  border: 1px solid #91d5ff;
+}
+.sub-card .card-title { color: #1890ff; }
+
+/* 管理员 - 灰色系 */
+.admin-card {
+  background: #fff;
+  border: 1px solid #eee;
+}

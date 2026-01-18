@@ -55,7 +55,12 @@ const Counselor = sequelize.define('Counselor', {
     type: DataTypes.STRING,
     allowNull: false,
     defaultValue: ''
-  }
+  },
+  status: {
+    type: DataTypes.INTEGER,
+    allowNull: false,
+    defaultValue: 1,
+  },
 })
 
 // 3. 咨询室表
@@ -149,7 +154,7 @@ Booking.belongsTo(Counselor, {
   foreignKey: 'counselor_id',  // 通过 booking.counselor_id 关联 Counselor 表
   targetKey: 'id'               // 指向 Counselor 表的 id 字段
 });
-/*
+
 // 房间拥有多个预约
 Room.hasMany(Booking, {
   foreignKey: 'room_id'
@@ -158,6 +163,52 @@ Booking.belongsTo(Room, {
   foreignKey: 'room_id',  // 通过 booking.room_id 关联 Room 表
   targetKey: 'id'         // 指向 Room 表的 id 字段
 });
-*/
+
+// 2026/01/05 新增
+const RecurringRule = sequelize.define('RecurringRule', {
+  day_of_week: {
+    type: DataTypes.INTEGER,
+    allowNull: false,
+    comment: "0=周日, 1=周一, 2=周二, 3=周三, 4=周四, 5=周五, 6=周六",
+  },
+  start_time: {
+    type: DataTypes.STRING,
+    allowNull: false,
+    comment: "开始时间",
+  },
+  start_time_slot: {
+    type: DataTypes.INTEGER,
+    allowNull: false,
+    comment: "开始时间槽",
+  },
+  end_time: {
+    type: DataTypes.STRING,
+    allowNull: false,
+    comment: "结束时间",
+  },
+  end_time_slot: {
+    type: DataTypes.INTEGER,
+    allowNull: false,
+    comment: "结束时间",
+  },
+
+
+});
+
+Counselor.hasMany(RecurringRule, {
+  foreignKey: 'counselor_id'
+});
+RecurringRule.belongsTo(Counselor, {
+  foreignKey: 'counselor_id',  // 通过 booking.counselor_id 关联 Counselor 表
+  targetKey: 'id'               // 指向 Counselor 表的 id 字段
+});
+Room.hasMany(RecurringRule, {
+  foreignKey: 'room_id'
+});
+RecurringRule.belongsTo(Room, {
+  foreignKey: 'room_id',  // 通过 booking.room_id 关联 Room 表
+  targetKey: 'id'         // 指向 Room 表的 id 字段
+});
+
 // 导出模型
-module.exports = { User, Counselor, Room, Booking, sequelize, Op };
+module.exports = { User, Counselor, Room, Booking, RecurringRule, sequelize, Op };
