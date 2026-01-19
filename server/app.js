@@ -14,8 +14,9 @@ app.use("/", routes);
 sequelize.sync({ force: false }).then(() => {
     console.log('数据库同步完成');
     const PORT = process.env.PORT || 3000;
-    app.listen(PORT, () => {
-        console.log(`服务器正在运行，端口号: ${PORT}`);
+    const HOST = process.env.HOST || '0.0.0.0';
+    app.listen(PORT, HOST, () => {
+        console.log(`服务器正在运行，地址: ${HOST}, 端口号: ${PORT}`);
     });
 }).catch(err => {
     console.error('数据库同步失败:', err);
