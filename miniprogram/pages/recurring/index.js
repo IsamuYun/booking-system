@@ -53,7 +53,7 @@ Page({
     // 把 0,1,2 转换成 '周日' 文字方便显示
     const list = (res.data || []).map(r => ({
       ...r,
-      dayStr: DAYS[r.dayOfWeek]
+      dayStr: DAYS[r.day_of_week]
     }));
     this.setData({ ruleList: list });
   },

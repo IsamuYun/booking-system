@@ -1,0 +1,31 @@
+<!-- 小程序的用户注册页 -->
+<view class="container">
+  <image src="../../images/login-banner.jpg" style="width: 720rpx; height: 400rpx;" mode="widthFix"></image>
+  
+  <view class="header">
+    <text class="title">新用户注册</text>
+    <text class="subtitle">用手机号注册新用户</text>
+  </view>
+
+  <view class="form-card">
+    <view class="input-group">
+      <text class="label">姓名</text>
+      <input class="input" placeholder="请输入姓名或昵称" bindinput="onInput" data-field="name" />
+    </view>
+
+    <view class="input-group">
+      <text class="label">手机</text>
+      <input class="input" placeholder="请输入手机号码" type="number" maxlength="11" bindinput="onInput" data-field="phone" />
+    </view>
+
+    <view class="input-group">
+      <text class="label">邀请码</text>
+      <input class="input" placeholder="请输入邀请码" type="text" 
+        bindinput="onInput" data-field="invite_code" />
+    </view>
+
+    <button class="submit-btn" bindtap="handleRegister" loading="{{loading}}">注册</button>
+  </view>
+
+  <view class="login-link" bindtap="goLogin">已有账号，请登录</view>
+</view>

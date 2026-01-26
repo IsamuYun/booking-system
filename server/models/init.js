@@ -6,18 +6,27 @@ const User = sequelize.define('User', {
   openid: {
     type: DataTypes.STRING,
     allowNull: false,
-    unique: true // OpenID 必须唯一
+    defaultValue: '',
   },
-  nickname: {
-    type: DataTypes.STRING
+  name: {
+    type: DataTypes.STRING,
+    allowNull: false,
+    defaultValue: '',
   },
   role: {
-    type: DataTypes.STRING,
+    type: DataTypes.ENUM('user', 'admin', 'guest'),
     defaultValue: 'user'
   },
+  /*
   avatarUrl: {
     type: DataTypes.STRING
-  }
+  },
+  */
+  phone: {
+    type: DataTypes.STRING,
+    allowNull: false,
+    defaultValue: '',
+  },
 });
 
 // 2. 咨询师档案表 - Counselor - 12/18 新增

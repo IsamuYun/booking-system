@@ -9,12 +9,12 @@ async function seed() {
         await sequelize.sync({ force: true }); // 重置数据库
 
         // 创建默认用户
-        await User.create({
-            openid: 'mock_openid_001',
-            nickname: '管理员-Isamu',
-            role: 'admin',
-            avatarUrl: 'https://example.com/default-avatar.png'
-        });
+        const users = await User.bulkCreate([
+            { openid: '', name: 'Isamu', role: 'admin', phone: '13764318517' },
+            { openid: '', name: '张燏', role: 'admin', phone: '18049931007' },
+            { openid: '', name: '助理-Sindy', role: 'user', phone: '17717521038' },
+            { openid: '', name: '访客-Fish', role: 'guest', phone: '13501640597' },
+        ]);
 
         // 创建房间
         const rooms = await Room.bulkCreate([

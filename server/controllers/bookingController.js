@@ -17,7 +17,7 @@ exports.createBooking = async (req, res) => {
     } = req.body;
 
     //const userId = req.user.id;         // 从请求中获取用户ID
-    const userId = "mock_openid_001";  // 模拟用户ID，实际应用中应从req.user.id获取
+    const userId = req.user.openid;       // 从请求中获取用户ID
 
     try {
         // 1. 获取请求中的咨询师的信息，为了拿到姓名和价格

@@ -1,5 +1,7 @@
 {
   "pages": [
+    "pages/login/index",
+    "pages/register/index",
     "pages/home/index",
     "pages/index/index",
     "pages/logs/logs",
@@ -7,10 +9,13 @@
     "pages/admin/index",
     "pages/profile/index",
     "pages/recurring/index",
-    "pages/booking/index"
+    "pages/booking/index",
+    "pages/guest/index"
+    
+    
   ],
   "window": {
-    "navigationBarTitleText": "预约系统",
+    "navigationBarTitleText": "聆心咨询室预约",
     "navigationBarBackgroundColor": "#FFFFFF",
     "navigationBarTextStyle": "black"
   },

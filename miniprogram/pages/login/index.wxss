@@ -1,0 +1,39 @@
+/* pages/login/index.wxss */
+page { 
+  background-color: #fff; 
+}
+.container { 
+  padding: 40px 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.logo-area { 
+  margin-bottom: 60px;
+  text-align: center; 
+}
+.logo-circle { 
+  width: 80px; 
+  height: 80px; 
+  background: #e6f7ff; 
+  border-radius: 50%; 
+  line-height: 80px; 
+  font-size: 40px; 
+  margin: 0 auto 15px;
+}
+.app-name { 
+  margin-top: 15px;
+  font-size: 20px;
+  font-weight: bold;
+  color: #333;
+}
+
+.form-area { width: 100%; }
+.input-group { border-bottom: 1px solid #eee; padding-bottom: 10px; margin-bottom: 30px; }
+.label { display: block; font-size: 14px; color: #999; margin-bottom: 10px; }
+.input { font-size: 18px; color: #333; height: 30px; }
+
+.login-btn { background-color: #07c160; color: #fff; border-radius: 30px; font-size: 16px; box-shadow: 0 4px 10px rgba(7, 193, 96, 0.3); }
+
+.tips { margin-top: 30px; font-size: 12px; color: #ccc; text-align: center; }

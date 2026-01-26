@@ -1,10 +1,8 @@
 <!--pages/home/index.wxml-->
 <view class="container">
-  <view class="welcome-section">
-    <view class="title">你好，咨询师</view>
-  </view>
+  
 
-  <image src="../../images/psy-therapy.png" style="width: 720rpx; height: 400rpx;" mode="widthFix"></image>
+  <image src="../../images/login-banner.jpg" style="width: 720rpx; height: 400rpx;" mode="widthFix"></image>
 
   <view class="menu-grid">
     <view class="menu-card main-card" bindtap="goToBooking">

@@ -1,0 +1,33 @@
+<!--pages/login/index.wxml-->
+<view class="container">
+  <image src="../../images/login-banner.jpg" style="width: 720rpx; height: 400rpx;" mode="widthFix"></image>
+
+  <view class="logo-area">
+    <view class="app-name">聆心预约</view>
+  </view>
+
+  <view class="form-area">
+    <view class="input-group">
+      <text class="label">手机号</text>
+      <input 
+        class="input" 
+        type="number" 
+        placeholder="请输入注册手机号" 
+        maxlength="11"
+        bindinput="onPhoneInput"
+      />
+    </view>
+
+    <button class="login-btn" bindtap="handleLogin" loading="{{loading}}">
+      登录
+    </button>
+  </view>
+
+  <view class="tips">
+    <text>若无账号，请先注册</text>
+    <button class="register-btn" bindtap="goToRegister">
+      注册
+    </button>
+
+  </view>
+</view>
