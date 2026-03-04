@@ -85,9 +85,9 @@ Page({
 
     await request.post('/recurring/rules/add', {
       day_of_week: selDayIndex,
-      start_time_slot: start_slot,
+      start_time_slot: start_slot + 16,
       start_time: times[start_slot],
-      end_time_slot: end_slot,
+      end_time_slot: end_slot + 16,
       end_time: times[end_slot],
       counselor_id: counselorList[selCounselorIdx].id,
       room_id: roomList[selRoomIdx].id

@@ -1,14 +1,10 @@
 // index.js
 const request = require('../../utils/request');
+const getToday = require('../../utils/util');
 
-// 日期格式化工具 （YYYY-MM-DD)
-const getToday = () => {
-  const now = new Date();
-  const year = now.getFullYear();
-  let month = now.getMonth() + 1;
-  let day = now.getDate();
-  return `${year}-${month < 10 ? '0' + month : month}-${day < 10 ? '0' + day : day}`;
-};
+const TIME_STRING = ['8:00', '8:30', '9:00', '9:30', '10:00', '10:30', '11:00', '11:30', '12:00', '12:30',
+  '13:00', '13:30', '14:00', '14:30', '15:00', '15:30', '16:00', '16:30', '17:00', '17:30', '18:00', 
+  '18:30', '19:00', '19:30', '20:00', '20:30', '21:00', '21:30', '22:00', '22:30', '23:00', '23:30', '24:00'];
 
 Page({
   data: {
@@ -134,13 +130,6 @@ Page({
     const room = e.currentTarget.dataset.room;
     let selectedStartIndex = 0;
     let selectedEndIndex = 2;
-    if (room.available_slots.length === 0) {
-      return;
-    }
-    if (room.available_slots.length < 2) {
-      selectedEndIndex = 1;
-    }
-    
     this.setData({
       showModal: true,
       currentRoom: room,
@@ -162,8 +151,8 @@ Page({
       return;
     }
     // 准备数据
-    const startTime = currentRoom.available_slots[selectedStartIndex];
-    const endTime = currentRoom.available_slots[selectedEndIndex];
+    const startTime = selectedStartIndex + 16;
+    const endTime = selectedEndIndex + 16;
 
     const payload = {
       room_id: currentRoom.id,

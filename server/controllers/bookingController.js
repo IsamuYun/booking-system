@@ -17,7 +17,8 @@ exports.createBooking = async (req, res) => {
     } = req.body;
 
     //const userId = req.user.id;         // 从请求中获取用户ID
-    const userId = req.user.openid;       // 从请求中获取用户ID
+    //const userId = req.user.openid;       // 从请求中获取用户ID
+    const userId = 1;
 
     try {
         // 1. 获取请求中的咨询师的信息，为了拿到姓名和价格
@@ -35,7 +36,7 @@ exports.createBooking = async (req, res) => {
         }
         // 3. 计算费用
         // 时长 = 结束点 - 开始 （1 = 0.5小时）
-        const duration = Math.floor((end_time_slot - start_time_slot) * 0.5);
+        const duration = Math.round((end_time_slot - start_time_slot) * 0.5);
         let booking_fee = 0.0;
         if (room.type === '咨询室') {
             booking_fee = duration * counselor.booking_price; // 咨询室的费用
@@ -111,5 +112,47 @@ exports.getBookingsByUser = async (req, res) => {
     catch (error) {
         console.error('获取预约失败:', error);
         res.status(500).json({ error: '获取预约失败' });
+    }
+};
+
+exports.getDailyGrouped = async (req, res) => {
+    try {
+        // 从Query参数中获取 data
+        const { date } = req.query;
+        if (!date) {
+            return res.status(400).json({ message: "缺少日期参数" });
+        }
+        const [rooms, bookings] = await Promise.all([
+            Room.findAll({
+                raw: true,
+                order: [['id', 'ASC']]
+            }),
+            Booking.findAll({
+                where: {
+                    date: date,
+                    status: { [Op.ne]: 'cancelled' }
+                },
+                include: [
+                    { model: Counselor, attributes: ['name', 'type'] }
+                ],
+                order: [['start_time_slot', 'ASC']], // 按时间顺序
+                raw: true,
+                nest: true // 让关联数据变成 { Counselor: { name: '...' } }
+            })
+        ]);
+        const result = rooms.map(room => {
+            // 在所有订单中，筛选出属于当前房间的
+            const room_bookings = bookings.filter(b => b.room_id === room.id);
+            return {
+                ...room, // 展开房间信息
+                bookings: room_bookings // 挂载该房间的预定目标列表
+            };
+        });
+
+        res.json({ data: result });
+    }
+    catch (error) {
+        console.error(error);
+        res.status(500).json({ message: "查询失败" });
     }
 };

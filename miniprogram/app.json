@@ -10,12 +10,13 @@
     "pages/profile/index",
     "pages/recurring/index",
     "pages/booking/index",
-    "pages/guest/index"
+    "pages/guest/index",
+    "pages/quick-booking/index"
     
     
   ],
   "window": {
-    "navigationBarTitleText": "聆心咨询室预约",
+    "navigationBarTitleText": "聆心预约",
     "navigationBarBackgroundColor": "#FFFFFF",
     "navigationBarTextStyle": "black"
   },

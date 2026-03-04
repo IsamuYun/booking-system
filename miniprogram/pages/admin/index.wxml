@@ -4,6 +4,19 @@
     <text class="back-btn">返回首页</text>
   </view>
 
+  <view class="export-section">
+    <view class="section-title">租赁费用结算</view>
+    <view class="export-row">
+      <picker mode="date" fields="month" value="{{exportMonth}}" bindchange="onExportMonthChange">
+        <view class="month-picker">
+          当前选择: {{exportMonth}}
+        </view>
+      </picker>
+      <button class="export-btn" bindtap="handleExport">下载Excel</button>
+    </view>
+  </view>
+
+  <!-- 
   <picker mode="date" value="{{selectedDate}}" bindchange="onDateChange">
     <view class="header">
       <text>📅 预约日期: {{selectedDate}}</text>
@@ -45,5 +58,5 @@
       </view>
     </block>
   </view> 
-  
+  -->
 </view>

@@ -1,0 +1,50 @@
+<!--pages/quick-booking/index.wxml-->
+<view class="page-container">
+  <view class="top-bar">
+    <picker mode="date" value="{{date}}" bindchange="onDateChange">
+      <view class="date-picker-wrap">
+        <text class="label">预约日期</text>
+        <text class="value">{{date}}</text>
+      </view>
+    </picker>
+  </view>
+
+  <scroll-view scroll-y="true" class="scroll-area">
+    <view class="list-padding">
+      <block wx:if={{booking_list.length === 0}}>
+        <view class="empty-state">本日暂无预订</view>
+      </block>
+
+      <block wx:else>
+        <view class="booking-card" wx:for="{{booking_list}}" wx:key="id">
+          <view class="room-indicator"></view>
+          <view class="card-content">
+            <view class="row-1">
+              <text class="room-name">{{item.Room.name}}</text>
+              <text class="time-range">{{item.start_time}} - {{item.end_time}}</text>
+            </view>
+            <view class="row-2">
+              <text class="counselor">{{item.booker_type}}</text>
+              <text class="booker">{{item.booker_name}}</text>
+            </view>
+            <view class="status-tag">{{item.status === "booked" ? "已预订" : "定期预约"}}</view>
+          </view>
+        </view>
+      </block>
+
+      <view class="space"></view>
+    </view>
+  </scroll-view>
+
+  <view class="bottom-panel">
+    <view class="panel-header">添加预订</view>
+
+    <view class="control-row">
+      <picker class="picker-flex" range="{{room_list}}" value="{{sel_room_idx}}" bindchange="bindRoomChange">
+        <view class="picker-box">{{room_list[sel_room_idx].name}}</view>
+      </picker>
+    </view>
+  </view>
+
+
+</view>
