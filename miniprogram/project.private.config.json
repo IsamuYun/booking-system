@@ -18,5 +18,5 @@
     "checkInvalidKey": true,
     "ignoreDevUnusedFiles": true
   },
-  "libVersion": "3.13.0"
+  "libVersion": "3.12.1"
 }
