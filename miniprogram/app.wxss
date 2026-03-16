@@ -3,7 +3,6 @@
   height: 100%;
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: space-between;
   padding: 0;
   box-sizing: border-box;
@@ -11,25 +10,27 @@
 
 /* 通用的顶部返回栏样式 */
 .back-bar {
-  padding: 10px 15px;
-  background-color: #FFF;
+  padding: 10rpx;
+  background-color: #FFFFFF;
   display: block;
   width: 100%;
-  align-items: left;
-  border-bottom: 1px solid #F0F0F0;
-  margin-bottom: 10px;
+  border-bottom: 1px solid #999999;
+  margin-bottom: 10rpx;
+  margin-top: 10rpx;
 }
 
 .back-btn {
   font-size: 14px;
-  color: #333;
-  display: flex;
-  align-items: center;
+  color: #2B7FFF;
+  display: block;
+  box-shadow: 0px 0px 10px 1px #999;
+  border-radius: 3px;
+  width: 160rpx;
+
 }
 
 .back-icon {
   font-size: 18px;
-  margin-right: 4px;
   font-weight: bold;
   color: #666;
 }

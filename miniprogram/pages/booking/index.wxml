@@ -1,2 +1,21 @@
 <!--pages/booking/index.wxml-->
-<text>pages/booking/index.wxml</text>
+<view class="container">
+  <view class="nav-bar">
+    <view class="nav-left" bindtap="goBack">
+      <text class="nav-cta-btn">返回首页</text>
+    </view>
+    <view class="nav-center">预约情况</view>
+    <view class="nav-right"></view>
+  </view>
+
+  <view clas="header-section">
+    <view class="date-label">请选择预约日期:</view>
+    <picker mode="date" value="{{selected_date}}" bindchange="onDateChange">
+      <view class="date-picker-box">
+        <text calss="date-text">{{selected_date}}</text>
+      </view>
+    </picker>
+  </view>
+
+
+</view>

@@ -4,16 +4,17 @@ page {
 }
 
 .container {
-  padding: 30px 20px;
+  padding: 20px;
 }
 
 /* 顶部欢迎区 */
-.welcome-section {
-  display: inline-block;
-  width: 100%;
-  text-align: left;
+.hero-section {
   margin-top: 40rpx;
-  margin-bottom: 40rpx;
+  margin-bottom: 10rpx;
+  width: 700rpx;
+  height: 360rpx;
+  border-radius: 2px;
+  border: 0px;
 }
 
 .title {

@@ -1,7 +1,7 @@
 // pages/admin/index.js
 const request = require("../../utils/request");
 
-const BASE_URL = "http://192.168.0.79:3000";
+const BASE_URL = "http://192.168.0.22:3000";
 
 const getCurrentMonth = () => {
   const now = new Date();

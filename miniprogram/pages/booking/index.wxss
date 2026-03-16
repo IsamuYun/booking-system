@@ -1,1 +1,55 @@
 /* pages/booking/index.wxss */
+.container {
+  background-color: #FFFFFF;
+  padding: 20px;
+  font-size: 14px;
+
+}
+
+/* 日期选择区域 */
+.header-section {
+  padding: 20px;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+.date-label {
+  font-size: 16px;
+  color: #2B7FFF;
+}
+
+.date-picker-box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #FAFAFA;
+  color: #2B7FFF;
+  border-radius: 3px;
+  border: 1px solid #2B7FFF;
+  box-shadow: 0px 0px 10px 1px #999;
+}
+
+.date-text {
+  font-size: 14px;
+  color: #2B7FFF;
+}
+
+.nav-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 88rpx;
+  background-color: #FFFFFF;
+  z-index: 1000;
+  border-bottom: 1px solid #2B7FFF;
+
+  display: grid;
+  grid-template-columns: 120rpx 1fr 120rpx;
+  align-items: center;
+}
+
+.nav-left {
+  display: grid;
+
+}

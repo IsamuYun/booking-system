@@ -8,6 +8,9 @@ const adminController = require('../controllers/adminController');
 const recurringController = require('../controllers/recurringController');
 const authController = require('../controllers/authController');
 const reportController = require('../controllers/reportController');
+const importController = require('../controllers/importController');
+
+router.get('/admin/import', importController.importExcelBookings);
 
 router.get('/rooms', roomController.getRooms);
 router.get('/counselors', counselorController.getCounselors);
