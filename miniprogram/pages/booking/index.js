@@ -17,7 +17,8 @@ Page({
    */
   data: {
     // 页面静态数据
-    
+    selected_date: getToday(),
+
   },
 
   /**

@@ -33,6 +33,7 @@ exports.getRules = async (req, res) => {
             ],
             order: [
                 ['day_of_week', 'ASC'],
+                ['room_id', 'ASC'],
                 ['start_time_slot', 'ASC']
             ]
         });
@@ -121,13 +122,13 @@ exports.generateBookings = async (req, res) => {
         }
         // 生成未来30天的预约
         const bookings = [];
-        const start = new Date();
-        const end = new Date();
-        end.setDate(start.getDate() + 30);
+        const now = new Date();
+        const start = new Date(now.getFullYear(), now.getMonth(), 1);
+        const end = new Date(now.getFullYear(), now.getMonth() + 1, 1);
         let count = 0;
 
         // 遍历未来30天
-        while (start <= end) {
+        while (start < end) {
             // 遍历每一天的每个规则
             for (const rule of rules) {
                 // 检查这一天是否是规则的那一天
@@ -174,7 +175,7 @@ exports.generateBookings = async (req, res) => {
                             booker_name: rule.Counselor.name,
                             booker_type: rule.Counselor.type,
                             booking_fee: booking_fee,
-                            status: 'booked',
+                            status: 'recurring',
                             user_id: "mock_openid_002",
                         });
                         bookings.push(booking);

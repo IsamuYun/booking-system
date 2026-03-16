@@ -1,4 +1,7 @@
-// pages/home/index.js
+// pages/import/index.js
+
+const request = require('../../utils/request');
+
 Page({
 
   /**
@@ -8,63 +11,19 @@ Page({
 
   },
 
-  // 跳转到预约页面 (原本的首页)
-  goToBooking() {
-    wx.navigateTo({
-      url: "/pages/index/index",
-    });
-  },
-
-  goToAdmin() {
-    wx.navigateTo({
-      url: "/pages/admin/index",
-    });
-  },
-
-  // 跳转到我的预约
-  goToMyBooking() {
-    wx.navigateTo({
-      url: "/pages/my/index",
-    });
-  },
-
-  // 跳转到定期预约
-  goToRecurring() {
-    wx.navigateTo({
-      url: "/pages/recurring/index",
-    });
-  },
-
-  // 
-  goToImport() {
-    wx.navigateTo({
-      url: "/pages/import/index",
-    })
-  },
-
-  //
-  goToNewBooking() {
-    wx.navigateTo({
-      url: "/pages/booking/index",
-    });
-  },
-  
-
   /**
    * Lifecycle function--Called when page load
    */
   onLoad(options) {
-
+    //
   },
 
   /**
    * Lifecycle function--Called when page is initially rendered
    */
   onReady() {
-    //this.dealCards();
+    const res = request.get("/admin/import");
   },
-
-  
 
   /**
    * Lifecycle function--Called when page show

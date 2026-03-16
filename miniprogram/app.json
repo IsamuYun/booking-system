@@ -10,25 +10,18 @@
     "pages/profile/index",
     "pages/recurring/index",
     "pages/booking/index",
-    "pages/guest/index"
-    
+    "pages/guest/index",
+    "pages/import/index"
     
   ],
-  "window": {
-    "navigationBarTitleText": "聆心咨询室预约",
-    "navigationBarBackgroundColor": "#FFFFFF",
-    "navigationBarTextStyle": "black"
-  },
+  
   "style": "v2",
   "renderer": "skyline",
   "rendererOptions": {
     "skyline": {
-      "tagNameStyleIsolation": "apply-shared",
-      "defaultDisplayBlock": true,
-      "defaultContentBox": true,
-      "disableABTest": true,
-      "sdkVersionBegin": "3.6.0",
-      "sdkVersionEnd": "15.255.255"
+      "defaultDisplayBlock": false,
+      "defaultContentBox": false,
+      "sdkVersionBegin": "3.6.0"
     }
   },
   "componentFramework": "glass-easel",

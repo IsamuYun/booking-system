@@ -133,3 +133,40 @@ page {
   padding: 6px 12px;
   border-radius: 20px;
 }
+
+/* 导出区域 */
+.export-section {
+  background: #fff;
+  padding: 15px;
+  margin-bottom: 20px; /* 与下方列表隔开 */
+  border-bottom: 1px solid #eee;
+}
+
+.export-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.month-picker {
+  border: 1px solid #ddd;
+  padding: 8px 15px;
+  border-radius: 4px;
+  color: #333;
+  font-size: 14px;
+  background: #f9f9f9;
+}
+
+.export-btn {
+  margin: 0;
+  font-size: 14px;
+  background-color: #1890ff; /* 商务蓝 */
+  color: white;
+  padding: 8px 20px;
+  line-height: 1.5;
+}
+
+.export-btn::before {
+  background-color: #096dd9;
+}

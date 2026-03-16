@@ -1,8 +1,23 @@
 /* pages/recurring/index.wxss */
-.container { padding: 20px; padding-bottom: 80px; }
-.section-title { font-weight: bold; margin: 15px 0 10px; border-left: 4px solid #07c160; padding-left: 10px;}
+.container { 
+  padding: 20px; 
+  padding-bottom: 100px;
+}
 
-.form-card { background: #fff; padding: 15px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+.section-title { 
+  font-weight: bold; 
+  margin: 15px 0 10px;
+  border-left: 4px solid #07c160; 
+  padding-left: 10px;
+}
+
+.form-card { 
+  background: #fff; 
+  padding: 15px; 
+  border-radius: 8px; 
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
 .picker-row { border-bottom: 1px solid #eee; padding: 10px 0; font-size: 14px; }
 .time-row { display: flex; justify-content: space-between; align-items: center; margin: 15px 0; }
 .time-box { background: #f0f0f0; padding: 8px 20px; border-radius: 4px; }
@@ -19,3 +34,31 @@
 
 .footer { position: fixed; bottom: 0; left: 0; width: 100%; padding: 15px; background: #fff; border-top: 1px solid #eee; }
 .gen-btn { background: #07c160; color: #fff; }
+
+/* 🟢 新增滚动区域样式 */
+.rule-scroll-box {
+  width: 100%;
+  /* 设置最大高度：
+     50vh 表示占用屏幕高度的 50%
+     您可以根据实际需要改成固定像素，如 400px 
+  */
+  max-height: 50vh; 
+  background: #f7f8fa; /* 滚动区域背景色 */
+  border-radius: 8px;
+  margin-bottom: 20px; /* 给底部按钮留点距离 */
+  height: 50vh;
+}
+
+/* 如果列表为空时的提示样式 */
+.empty-tip {
+  text-align: center;
+  color: #999;
+  padding: 30px 0;
+  font-size: 14px;
+}
+
+/* 🟢 优化 rule-item 样式，避免它紧贴着滚动条边缘 */
+.rule-list {
+  padding-right: 5px; /* 给右边滚动条留一点空隙 */
+}
+

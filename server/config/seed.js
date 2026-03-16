@@ -47,6 +47,9 @@ async function seed() {
             { name: '徐明燕', type: '内部', booking_price: 70.0, booking_multi_price: 120.0, status: 1 },
             { name: '杨飞', type: '内部', booking_price: 70.0, booking_multi_price: 120.0, status: 1 },
             { name: '曹晓春', type: '内部', booking_price: 70.0, booking_multi_price: 120.0, status: 1 },
+            { name: '宗薏', type: '内部', booking_price: 70.0, booking_multi_price: 120.0, status: 1 },
+            { name: '章怡琼', type: '内部', booking_price: 70.0, booking_multi_price: 120.0, status: 1 },
+            
 
             { name: '悦悦', type: '外部', booking_price: 90.0, booking_multi_price: 120.0, status: 1 },
             { name: '周家琦', type: '外部', booking_price: 90.0, booking_multi_price: 120.0, status: 1 },
@@ -69,6 +72,13 @@ async function seed() {
             { name: '笑凡', type: '外部', booking_price: 0.0, booking_multi_price: 0.0, status: 1 },
 
             { name: '冯吉星', type: '外部', booking_price: 50.0, booking_multi_price: 50.0, status: 1 },
+            { name: '王永娟', type: '外部', booking_price: 90.0, booking_multi_price: 120.0, status: 1 },
+
+            { name: '张燏', type: '内部', booking_price: 70.0, booking_multi_price: 120.0, status: 1 },
+            { name: '卓宜蓓', type: '外部', booking_price: 90.0, booking_multi_price: 120.0, status: 1 },
+            { name: '仝静', type: '外部', booking_price: 70.0, booking_multi_price: 120.0, status: 1 },
+            { name: '郭欣悦', type: '外部', booking_price: 70.0, booking_multi_price: 120.0, status: 1 },
+            { name: '章静', type: '外部', booking_price: 90.0, booking_multi_price: 120.0, status: 1 },
         ]);
         console.log(`✅ 已创建 ${counselors.length} 个咨询师档案`);
     }

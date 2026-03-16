@@ -131,7 +131,7 @@ const Booking = sequelize.define('Booking', {
     defaultValue: 0.0
   },
   status: {
-    type: DataTypes.ENUM('booked', 'cancelled', 'completed'),
+    type: DataTypes.ENUM('booked', 'cancelled', 'completed', 'scheduled'),
     defaultValue: 'booked'
   },
   user_id: {

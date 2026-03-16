@@ -1,8 +1,7 @@
 <!--pages/home/index.wxml-->
 <view class="container">
   
-
-  <image src="../../images/login-banner.jpg" style="width: 720rpx; height: 400rpx;" mode="widthFix"></image>
+  <image src="../../images/login-banner.jpg" class="hero-section" mode="widthFix"></image>
 
   <view class="menu-grid">
     <view class="menu-card main-card" bindtap="goToBooking">
@@ -35,6 +34,22 @@
     <view class="text-group">
       <text class="card-title">管理后台</text>
       <text class="card-desc">仅限管理员使用</text>
+    </view>
+  </view>
+
+  <view class="menu-card admin-card" bindtap="goToImport">
+    <view class="icon">🛠</view>
+    <view class="text-group">
+      <text class="card-title">导入数据</text>
+      <text class="card-desc">仅限管理员使用</text>
+    </view>
+  </view>
+
+  <view class="menu-card sub-card" bindtap="goToNewBooking">
+    <view class="icon">🗃️</view>
+    <view class="text-group">
+      <text class="card-title">新房间列表</text>
+      <text class="card-desc">新房间列表</text>
     </view>
   </view>
 </view>

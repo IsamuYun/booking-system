@@ -1,12 +1,13 @@
 // pages/admin/index.js
 const request = require("../../utils/request");
 
-const getToday = () => {
+const BASE_URL = "http://192.168.0.22:3000";
+
+const getCurrentMonth = () => {
   const now = new Date();
   const year = now.getFullYear();
   let month = now.getMonth() + 1;
-  let day = now.getDate();
-  return `${year}-${month < 10 ? '0' + month : month}-${day < 10 ? '0' + day : day}`;
+  return `${year}-${month < 10 ? '0' + month : month}`;
 }
 
 Page({
@@ -15,8 +16,7 @@ Page({
    * Page initial data
    */
   data: {
-    selectedDate: getToday(),
-    bookingList: [], // 后端返回的列表
+    exportMonth: getCurrentMonth(),
     loading: false
   },
 
@@ -24,16 +24,53 @@ Page({
    * Lifecycle function--Called when page load
    */
   onLoad(options) {
-    this.fetchSchedule();
   },
 
   goBack() {
     wx.navigateBack();
   },
 
-  onDateChange(e) {
-    this.setData({ selectedDate: e.detail.value }, () => {
-      this.fetchSchedule();
+  // 选择月份
+  onExportMonthChange(e) {
+    this.setData({ exportMonth: e.detail.value });
+  },
+
+  // 执行下载
+  handleExport() {
+    const month = this.data.exportMonth;
+    const token = wx.getStorageSync('token'); // 获取Token用于鉴权
+    wx.showLoading({title: '生成文件中...'});
+    wx.downloadFile({
+      url: BASE_URL + `/admin/report?month=${month}`,
+      header: {
+        "Authorization": `Bearer ${token}`  // 如果后端开启JWT验证，就必须带上
+      },
+      success: (res) => {
+        wx.hideLoading();
+        if (res.statusCode === 200) {
+          // 下载成功，打开文件
+          const filePath = res.tempFilePath;
+          wx.openDocument({
+            filePath: filePath,
+            showMenu: true, // 关键：显示右上角菜单
+            fileType: 'xlsx',
+            success: function () {
+              console.log("打开文档成功");
+            },
+            fail: function(err) {
+              wx.showToast({ title: "无法打开文件", icon: "none" });
+            }
+          });
+        }
+        else {
+          wx.showToast({ title: "导出失败", icon: "none"});
+        }
+      },
+      fail: (err) => {
+        wx.hideLoading();
+        console.log(err);
+        wx.showToast({ title: "网络请求失败", icon: "none"});
+      }
     });
   },
 
