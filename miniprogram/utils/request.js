@@ -1,8 +1,6 @@
 // 真机调试需勾选"不校验合法域名"
-const BASE_URL = "http://192.168.71.82:3000";
-
+const BASE_URL = "http://192.168.0.22:5100";
 //const BASE_URL = "http://124.220.171.165:3000";
-//const BASE_URL = "https://booking-system-211526-7-1393385077.sh.run.tcloudbase.com";
 
 function request(url, method = "GET", data = {}) {
     const token = wx.getStorageSync('token');
@@ -40,6 +38,7 @@ function request(url, method = "GET", data = {}) {
 }
 
 module.exports = {
+  BASE_URL,
   get: (url, data) => request(url, 'GET', data),
   post: (url, data) => request(url, 'POST', data),
   put: (url, data) => request(url, 'PUT', data),

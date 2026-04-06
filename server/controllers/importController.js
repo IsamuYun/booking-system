@@ -3,7 +3,17 @@ const { Room, Counselor, Booking } = require('../models/init')
 const { Op } = require('sequelize');
 const path = require('path');
 
-const FILE_PATH = path.join(__dirname, "../data/xls/申银工作室租赁使用登记表.xlsx");
+// 计算上个月的工作表名称，格式：yyyy年m月
+function getLastMonthSheetName() {
+    const now = new Date();
+    let year = now.getFullYear();
+    let month = now.getMonth(); // 0-based: 0=1月，所以此值即为上个月月份数
+    if (month === 0) {
+        year -= 1;
+        month = 12;
+    }
+    return `${year}年${month}月`;
+}
 
 // 辅助函数：将 Date 对象转为 "YYYY-MM-DD" 格式
 function formatDate(date_value) {
@@ -107,13 +117,19 @@ function generateCounselorKey(type, name) {
     return '外部-' + name;
 }
 
-exports.importExcelBookings = async (req, res) => {
+exports.uploadAndImport = async (req, res) => {
+    if (!req.file) {
+        return res.status(400).json({ success: false, message: '未收到文件，请上传 xlsx 文件' });
+    }
+
+    const filePath = req.file.path;
+    const sheetName = getLastMonthSheetName();
+
     const workbook = new ExcelJS.Workbook();
-    await workbook.xlsx.readFile(FILE_PATH);
-    const worksheet = workbook.getWorksheet('2026年2月');
+    await workbook.xlsx.readFile(filePath);
+    const worksheet = workbook.getWorksheet(sheetName);
     if (!worksheet) {
-        console.error('❌ 未找到指定的工作表，请检查 Sheet 名称');
-        return;
+        return res.status(400).json({ success: false, message: `未找到工作表「${sheetName}」，请检查文件内容` });
     }
 
     // 预先加载所有房间和辅导员数据，减少后续查询次数
@@ -236,11 +252,13 @@ exports.importExcelBookings = async (req, res) => {
     // 6. 输出结果
     console.log('--- 提取结果 ---');
     console.log(`共找到 ${recordList.length} 条预定记录：`);
+    let savedCount = 0;
+    let skippedCount = 0;
     for (const record of recordList) {
         console.log(`房间: ${record.room_id}, \
             日期: ${record.booking_date}, 时间: ${record.start_time}-${record.end_time}, \
             费用: ¥${record.booking_fee}, 预定人: ${record.booker_name}, 类型: ${record.booker_type}`);
-        
+
         // 7. 将记录保存到数据库
         const conflictBooking = await Booking.findOne({
             where: {
@@ -261,6 +279,7 @@ exports.importExcelBookings = async (req, res) => {
 
         if (conflictBooking) {
             console.log('该时段的房间已经被预订');
+            skippedCount++;
             continue; // 跳过冲突的记录
         }
 
@@ -280,5 +299,15 @@ exports.importExcelBookings = async (req, res) => {
         });
 
         console.log('已保存预定记录到数据库');
+        savedCount++;
     }
+
+    return res.json({
+        success: true,
+        message: `导入完成：共解析 ${recordList.length} 条，成功导入 ${savedCount} 条，跳过冲突 ${skippedCount} 条`,
+        sheetName,
+        total: recordList.length,
+        saved: savedCount,
+        skipped: skippedCount,
+    });
 }

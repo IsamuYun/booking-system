@@ -1,2 +1,33 @@
 <!--pages/import/index.wxml-->
-<text>pages/import/index.wxml</text>
+<view class="container">
+  <view class="title">导入预约数据</view>
+
+  <view class="card">
+    <view class="section-label">选择 Excel 文件（仅支持 .xlsx）</view>
+    <button class="btn-choose" bindtap="chooseFile">
+      {{fileName ? '重新选择' : '选择文件'}}
+    </button>
+    <view class="file-name" wx:if="{{fileName}}">
+      <text class="file-icon">📄</text>
+      <text class="file-text">{{fileName}}</text>
+    </view>
+    <view class="file-hint" wx:else>
+      <text>未选择文件</text>
+    </view>
+  </view>
+
+  <view class="card" wx:if="{{fileName}}">
+    <view class="section-label">将自动解析上个月的工作表</view>
+    <button
+      class="btn-upload {{uploading ? 'btn-disabled' : ''}}"
+      bindtap="uploadFile"
+      disabled="{{uploading}}"
+    >
+      {{uploading ? '导入中...' : '开始导入'}}
+    </button>
+  </view>
+
+  <view class="result-card {{resultSuccess ? 'result-success' : 'result-error'}}" wx:if="{{resultMsg}}">
+    <text>{{resultMsg}}</text>
+  </view>
+</view>

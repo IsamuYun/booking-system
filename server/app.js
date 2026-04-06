@@ -13,7 +13,7 @@ app.use("/", routes);
 // { force: false } 确保不会删除已有数据, 只会创建缺失的表
 sequelize.sync({ force: false }).then(() => {
     console.log('数据库同步完成');
-    const PORT = process.env.PORT || 3000;
+    const PORT = process.env.PORT || 5100;
     const HOST = process.env.HOST || '0.0.0.0';
     app.listen(PORT, HOST, () => {
         console.log(`服务器正在运行，地址: ${HOST}, 端口号: ${PORT}`);

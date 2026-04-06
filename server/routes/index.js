@@ -1,6 +1,8 @@
 // server/routes/index.js
 const express = require('express');
 const router = express.Router();
+const path = require('path');
+const multer = require('multer');
 const roomController = require('../controllers/roomController');
 const counselorController = require('../controllers/counselorController');
 const bookingController = require('../controllers/bookingController');
@@ -10,7 +12,18 @@ const authController = require('../controllers/authController');
 const reportController = require('../controllers/reportController');
 const importController = require('../controllers/importController');
 
-router.get('/admin/import', importController.importExcelBookings);
+const xlsUpload = multer({
+    dest: path.join(__dirname, '../data/xls/'),
+    fileFilter: (req, file, cb) => {
+        if (file.originalname.endsWith('.xlsx')) {
+            cb(null, true);
+        } else {
+            cb(new Error('仅支持 .xlsx 格式的文件'));
+        }
+    },
+});
+
+router.post('/admin/import', xlsUpload.single('file'), importController.uploadAndImport);
 
 router.get('/rooms', roomController.getRooms);
 router.get('/counselors', counselorController.getCounselors);
