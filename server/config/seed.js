@@ -79,6 +79,7 @@ async function seed() {
             { name: '仝静', type: '外部', booking_price: 70.0, booking_multi_price: 120.0, status: 1 },
             { name: '郭欣悦', type: '外部', booking_price: 70.0, booking_multi_price: 120.0, status: 1 },
             { name: '章静', type: '外部', booking_price: 90.0, booking_multi_price: 120.0, status: 1 },
+            { name: '廖丽娟', type: '外部', booking_price: 90.0, booking_multi_price: 120.0, status: 1 },
         ]);
         console.log(`✅ 已创建 ${counselors.length} 个咨询师档案`);
     }

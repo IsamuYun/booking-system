@@ -219,5 +219,39 @@ RecurringRule.belongsTo(Room, {
   targetKey: 'id'         // 指向 Room 表的 id 字段
 });
 
+// 5. 管理后台账号表
+const AdminUser = sequelize.define('AdminUser', {
+  username: {
+    type: DataTypes.STRING,
+    allowNull: false,
+    unique: true,
+  },
+  password_hash: {
+    type: DataTypes.STRING,
+    allowNull: false,
+  },
+  display_name: {
+    type: DataTypes.STRING,
+    defaultValue: '',
+  },
+});
+
+// 6. 系统配置表（key-value）
+const SystemConfig = sequelize.define('SystemConfig', {
+  key: {
+    type: DataTypes.STRING,
+    allowNull: false,
+    unique: true,
+  },
+  value: {
+    type: DataTypes.STRING,
+    allowNull: false,
+  },
+  description: {
+    type: DataTypes.STRING,
+    defaultValue: '',
+  },
+});
+
 // 导出模型
-module.exports = { User, Counselor, Room, Booking, RecurringRule, sequelize, Op };
+module.exports = { User, Counselor, Room, Booking, RecurringRule, AdminUser, SystemConfig, sequelize, Op };

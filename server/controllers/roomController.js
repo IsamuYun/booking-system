@@ -1,4 +1,52 @@
 const { Room, Booking } = require('../models/init');
+
+exports.getAllRooms = async (req, res) => {
+  try {
+    const rooms = await Room.findAll({ raw: true });
+    res.status(200).json({ data: rooms });
+  } catch (error) {
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+};
+
+exports.createRoom = async (req, res) => {
+  try {
+    const { name, type } = req.body;
+    if (!name || !type) return res.status(400).json({ error: '名称和类型为必填项' });
+    const room = await Room.create({ name, type, isAvailable: true });
+    res.status(201).json({ data: room });
+  } catch (error) {
+    console.error('创建咨询室失败:', error);
+    res.status(500).json({ error: '创建咨询室失败' });
+  }
+};
+
+exports.updateRoom = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { name, type, isAvailable } = req.body;
+    const room = await Room.findByPk(id);
+    if (!room) return res.status(404).json({ error: '咨询室不存在' });
+    await room.update({ name, type, isAvailable });
+    res.json({ data: room });
+  } catch (error) {
+    console.error('更新咨询室失败:', error);
+    res.status(500).json({ error: '更新咨询室失败' });
+  }
+};
+
+exports.deleteRoom = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const room = await Room.findByPk(id);
+    if (!room) return res.status(404).json({ error: '咨询室不存在' });
+    await room.destroy();
+    res.json({ success: true });
+  } catch (error) {
+    console.error('删除咨询室失败:', error);
+    res.status(500).json({ error: '删除咨询室失败' });
+  }
+};
 const { Op } = require('sequelize');
 
 // 一天的时间段
