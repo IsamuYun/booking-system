@@ -1,0 +1,57 @@
+<view class="usage-card" wx:if="{{selectedDay}}">
+  <view class="usage-head">
+    <text class="usage-title">使用状况</text>
+    <text class="usage-range">近 15 天 · 未来 15 天</text>
+  </view>
+
+  <scroll-view class="day-strip" scroll-x="true" enable-flex="true" show-scrollbar="{{false}}" scroll-left="{{dayStripScrollLeft}}">
+    <view class="day-strip-inner">
+      <button
+        wx:for="{{days}}"
+        wx:key="offset"
+        class="day-cell {{item.selected ? 'selected' : ''}} {{item.isPast ? 'past' : ''}}"
+        data-index="{{item.index}}"
+        bindtap="selectDay"
+        hover-class="is-pressed"
+      >
+        <text class="day-week">{{item.weekLabel}}</text>
+        <text class="day-num">{{item.dateNum}}</text>
+        <view class="day-bar">
+          <view wx:if="{{!item.isRest}}" class="day-bar-fill" style="width: {{item.occupancyWidth}};"></view>
+        </view>
+        <text class="day-month">{{item.monthLabel}}</text>
+      </button>
+    </view>
+  </scroll-view>
+
+  <view class="usage-body">
+    <view class="divider"></view>
+    <view class="selected-row">
+      <text class="selected-date">{{selectedDay.dateLabel}}</text>
+      <text class="selected-summary">{{selectedDay.summary}}</text>
+    </view>
+
+    <view class="hour-bar">
+      <view wx:for="{{selectedDay.slots}}" wx:key="hour" class="hour-segment slot-{{item.state}}"></view>
+    </view>
+    <view class="hour-scale">
+      <text>09:00</text>
+      <text>15:00</text>
+      <text>21:00</text>
+    </view>
+
+    <view class="slot-grid">
+      <view wx:for="{{selectedDay.slots}}" wx:key="hour" class="slot-card slot-{{item.state}}">
+        <text class="slot-hour">{{item.hourLabel}}</text>
+        <text class="slot-label">{{item.stateText}}</text>
+      </view>
+    </view>
+
+    <view class="legend">
+      <view wx:for="{{legendItems}}" wx:key="state" class="legend-item">
+        <view class="legend-dot dot-{{item.state}}"></view>
+        <text>{{item.label}}</text>
+      </view>
+    </view>
+  </view>
+</view>

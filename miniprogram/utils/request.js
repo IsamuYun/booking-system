@@ -21,7 +21,7 @@ function request(url, method = "GET", data = {}) {
                     resolve(res.data);
                 }
                 else {
-                    // 如果 Token 过期(401) 可以自动跳转登录页
+                    // 如果 Token 过期(401)，由调用页提示用户联系前台处理权限
                     wx.showToast({
                       title: "请求失败: " + (res.data.message || res.statusCode),
                       icon: "none"

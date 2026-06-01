@@ -1,55 +1,196 @@
-<!--pages/home/index.wxml-->
-<view class="container">
-  
-  <image src="../../images/login-banner.jpg" class="hero-section" mode="widthFix"></image>
-
-  <view class="menu-grid">
-    <view class="menu-card main-card" bindtap="goToBooking">
-      <view class="icon">📖</view>
-      <view class="text-group">
-        <text class="card-title">开始预约</text>
-        <text class="card-desc">预约咨询室</text>
+<!-- pages/home/index.wxml -->
+<view class="home-page">
+  <scroll-view class="home-scroll" scroll-y="true" enhanced="true" show-scrollbar="{{false}}">
+    <view class="home-content">
+      <view class="home-hero">
+        <image class="hero-photo" src="../../images/hero.jpg" mode="aspectFill"></image>
       </view>
-    </view>
-  </view>
 
-  <view class="menu-card sub-card" bindtap="goToMyBooking">
-    <view class="icon">🗓️</view>
-    <view class="text-group">
-      <text class="card-title">我的预约</text>
-      <text class="card=desc">查看预约记录</text>
-    </view>
-  </view>
+      <view class="app-card home-stats">
+        <view class="stat-item">
+          <text class="stat-value">5</text>
+          <text class="stat-label">咨询室</text>
+        </view>
+        <view class="stat-divider"></view>
+        <view class="stat-item">
+          <text class="stat-value stat-value-accent">3</text>
+          <text class="stat-label">今日空闲</text>
+        </view>
+        <view class="stat-divider"></view>
+        <view class="stat-item">
+          <text class="stat-value">24</text>
+          <text class="stat-label">咨询师</text>
+        </view>
+      </view>
 
-  <view class="menu-card sub-card" bindtap="goToRecurring">
-    <view class="">🗃️</view>
-    <view class="text-group">
-      <text class="card-title">定期预约</text>
-      <text class="card=desc">设定定期预约</text>
-    </view>
-  </view>
+      <view class="section-head">
+        <text class="section-title">本日可用咨询室</text>
+        <!--<text class="section-more" bindtap="goToRooms">全部 ›</text>-->
+      </view>
 
-  <view class="menu-card admin-card" bindtap="goToAdmin">
-    <view class="icon">🛠</view>
-    <view class="text-group">
-      <text class="card-title">管理后台</text>
-      <text class="card-desc">仅限管理员使用</text>
-    </view>
-  </view>
+      <view class="room-grid">
+        <view class="room-mini-card" bindtap="goToRoomDetail" data-id="jingshui" hover-class="is-pressed">
+          <image class="room-mini-photo" src="../../images/counselling-room-1.png" mode="aspectFill"></image>
+          <view class="status-pill status-free room-status">空闲</view>
+          <view class="room-mini-body">
+            <view class="room-title-row">
+              <text class="room-mini-name">咨询室一</text>
+              <!--<text class="room-mini-en">Still Water</text>-->
+            </view>
+            <view class="room-mini-meta">
+              <view class="mini-meta-item">
+                <view class="mini-icon mini-icon-users"></view>
+                <text>1–2 人</text>
+              </view>
+              <view class="mini-meta-item">
+                <view class="mini-icon mini-icon-area"></view>
+                <text>18㎡</text>
+              </view>
+            </view>
+          </view>
+        </view>
 
-  <view class="menu-card admin-card" bindtap="goToImport">
-    <view class="icon">🛠</view>
-    <view class="text-group">
-      <text class="card-title">导入数据</text>
-      <text class="card-desc">仅限管理员使用</text>
-    </view>
-  </view>
+        <view class="room-mini-card" bindtap="goToRoomDetail" data-id="nuanyang" hover-class="is-pressed">
+          <image class="room-mini-photo" src="../../images/counselling-room-2.png" mode="aspectFill"></image>
+          <view class="status-pill status-busy room-status">已预约</view>
+          <view class="room-mini-body">
+            <view class="room-title-row">
+              <text class="room-mini-name">咨询室二</text>
+              <!--<text class="room-mini-en">Warm Sun</text>-->
+            </view>
+            <view class="room-mini-meta">
+              <view class="mini-meta-item">
+                <view class="mini-icon mini-icon-users"></view>
+                <text>1–3 人</text>
+              </view>
+              <view class="mini-meta-item">
+                <view class="mini-icon mini-icon-area"></view>
+                <text>20㎡</text>
+              </view>
+            </view>
+          </view>
+        </view>
 
-  <view class="menu-card sub-card" bindtap="goToNewBooking">
-    <view class="icon">🗃️</view>
-    <view class="text-group">
-      <text class="card-title">新房间列表</text>
-      <text class="card-desc">新房间列表</text>
+        <view class="room-mini-card" bindtap="goToRoomDetail" data-id="muyu" hover-class="is-pressed">
+          <image class="room-mini-photo" src="../../images/counselling-room-3.png" mode="aspectFill"></image>
+          <view class="status-pill status-free room-status">空闲</view>
+          <view class="room-mini-body">
+            <view class="room-title-row">
+              <text class="room-mini-name">咨询室三</text>
+              <!--<text class="room-mini-en">Whispering Wood</text>-->
+            </view>
+            <view class="room-mini-meta">
+              <view class="mini-meta-item">
+                <view class="mini-icon mini-icon-users"></view>
+                <text>1–4 人</text>
+              </view>
+              <view class="mini-meta-item">
+                <view class="mini-icon mini-icon-area"></view>
+                <text>26㎡</text>
+              </view>
+            </view>
+          </view>
+        </view>
+
+        <view class="room-mini-card" bindtap="goToRoomDetail" data-id="shayou" hover-class="is-pressed">
+          <image class="room-mini-photo" src="../../images/multi-room-2.jpg" mode="aspectFill"></image>
+          <view class="status-pill status-rest room-status">休息</view>
+          <view class="room-mini-body">
+            <view class="room-title-row">
+              <text class="room-mini-name">团队多功能室</text>
+              <!--<text class="room-mini-en">Sandplay</text>-->
+            </view>
+            <view class="room-mini-meta">
+              <view class="mini-meta-item">
+                <view class="mini-icon mini-icon-users"></view>
+                <text>4–8 人</text>
+              </view>
+              <view class="mini-meta-item">
+                <view class="mini-icon mini-icon-area"></view>
+                <text>22㎡</text>
+              </view>
+            </view>
+          </view>
+        </view>
+
+        <view class="room-mini-card room-mini-card-wide" bindtap="goToRoomDetail" data-id="tuanti" hover-class="is-pressed">
+          <image class="room-mini-photo room-mini-photo-wide" src="../../images/multi-room-1.jpg" mode="aspectFill"></image>
+          <view class="status-pill status-free room-status">空闲</view>
+          <view class="room-mini-body">
+            <view class="room-title-row">
+              <text class="room-mini-name">团体多功能厅</text>
+              <!--<text class="room-mini-en">Circle</text>-->
+            </view>
+            <view class="room-mini-meta">
+              <view class="mini-meta-item">
+                <view class="mini-icon mini-icon-users"></view>
+                <text>4–12 人</text>
+              </view>
+              <view class="mini-meta-item">
+                <view class="mini-icon mini-icon-area"></view>
+                <text>42㎡</text>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+
+      <view class="section-head admin-head">
+        <text class="section-title">关于倾听</text>
+      </view>
+
+      <view class="app-card about-card">
+        <text class="body-text">倾听心理是一间专注于个体、家庭与青少年心理健康的咨询诊所。我们相信，真正的疗愈始于被认真倾听。</text>
+        <view class="tag-row">
+          <text class="chip">注册系统</text>
+          <text class="chip">24 位咨询师</text>
+          <text class="chip">伦理督导</text>
+        </view>
+      </view>
+
+      <view class="section-head">
+        <text class="section-title">基本信息</text>
+      </view>
+
+      <view class="app-card info-list">
+        <view class="info-row">
+          <view class="info-icon-shell">
+            <view class="mini-icon mini-icon-pin"></view>
+          </view>
+          <text class="info-label">地址</text>
+          <text class="info-value">静安 · 申银发展大厦1号楼</text>
+        </view>
+        <view class="info-row">
+          <view class="info-icon-shell">
+            <view class="mini-icon mini-icon-clock"></view>
+          </view>
+          <text class="info-label">营业时间</text>
+          <text class="info-value">每日 09:00–21:00</text>
+        </view>
+        <view class="info-row last">
+          <view class="info-icon-shell">
+            <view class="mini-icon mini-icon-phone"></view>
+          </view>
+          <text class="info-label">预约电话</text>
+          <text class="info-value">(86)150-0184-0884</text>
+        </view>
+      </view>
+
+      <view class="bottom-space"></view>
+    </view>
+  </scroll-view>
+
+  <view class="bottom-nav">
+    <view class="bottom-nav-item active">
+      <text>首页</text>
+    </view>
+    <view class="bottom-nav-sep"></view>
+    <view class="bottom-nav-item" bindtap="goToRooms" hover-class="is-pressed">
+      <text>咨询室</text>
+    </view>
+    <view class="bottom-nav-sep"></view>
+    <view class="bottom-nav-item" bindtap="goToAbout" hover-class="is-pressed">
+      <text>关于</text>
     </view>
   </view>
 </view>

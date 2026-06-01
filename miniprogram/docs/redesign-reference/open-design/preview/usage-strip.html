@@ -1,0 +1,35 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8">
+<link rel="stylesheet" href="../ui_kits/miniprogram/kit.css">
+<style>
+  body{background:var(--color-bg);padding:22px;}
+  .cap{margin:0 0 14px;font-size:13px;color:var(--color-fg3);font-weight:500;}
+  .strip{display:flex;gap:4px;}
+  .cell{width:48px;padding:8px 0 7px;border-radius:12px;display:flex;flex-direction:column;align-items:center;gap:5px;}
+  .cell.sel{background:var(--color-primary);}
+  .wd{font-size:11px;color:var(--color-fg3);} .cell.sel .wd{color:rgba(255,255,255,.8);}
+  .dn{font-size:16px;font-weight:600;color:var(--color-fg1);font-family:var(--font-num);} .cell.sel .dn{color:#fff;}
+  .mb{width:26px;height:4px;border-radius:2px;overflow:hidden;background:var(--status-free-bg);}
+  .mb i{display:block;height:100%;background:var(--status-busy-dot);}
+  .mo{font-size:9px;color:var(--ink-4);font-family:var(--font-num);}
+  .legend{display:flex;gap:16px;margin-top:16px;}
+  .legend span{display:inline-flex;align-items:center;gap:6px;font-size:12px;color:var(--color-fg3);}
+  .legend i{width:9px;height:9px;border-radius:3px;}
+</style></head><body>
+<p class="cap">使用状况组件 · 日期条 (Usage calendar day-strip — past 15 + next 15 days)</p>
+<div class="card" style="padding:14px 10px;">
+  <div class="strip">
+    <div class="cell"><span class="wd">周六</span><span class="dn">16</span><span class="mb"><i style="width:70%"></i></span><span class="mo">5月</span></div>
+    <div class="cell"><span class="wd">周日</span><span class="dn">17</span><span class="mb"><i style="width:40%"></i></span><span class="mo">5月</span></div>
+    <div class="cell sel"><span class="wd">今天</span><span class="dn">18</span><span class="mb" style="background:rgba(255,255,255,.3)"><i style="width:50%;background:#fff"></i></span><span class="mo" style="color:rgba(255,255,255,.7)">5月</span></div>
+    <div class="cell"><span class="wd">周二</span><span class="dn">19</span><span class="mb"><i style="width:33%"></i></span><span class="mo">5月</span></div>
+    <div class="cell"><span class="wd">周三</span><span class="dn">20</span><span class="mb"><i style="width:25%"></i></span><span class="mo">5月</span></div>
+    <div class="cell"><span class="wd">周四</span><span class="dn">21</span><span class="mb"><i style="width:60%"></i></span><span class="mo">5月</span></div>
+    <div class="cell"><span class="wd">周五</span><span class="dn">22</span><span class="mb"><i style="width:16%"></i></span><span class="mo">5月</span></div>
+  </div>
+  <div class="legend">
+    <span><i style="background:var(--status-free-dot)"></i>空闲</span>
+    <span><i style="background:var(--status-busy-dot)"></i>已预约</span>
+    <span><i style="background:var(--status-rest-dot)"></i>休息</span>
+  </div>
+</div>
+</body></html>

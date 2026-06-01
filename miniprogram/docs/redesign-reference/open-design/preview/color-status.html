@@ -1,0 +1,21 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  body{margin:0;font-family:var(--font-sans);background:var(--color-surface);padding:24px;}
+  .cap{margin:0 0 14px;font-size:13px;color:var(--color-fg3);font-weight:500;letter-spacing:.02em;}
+  .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;}
+  .tile{display:flex;align-items:center;gap:10px;}
+  .chip{width:40px;height:40px;border-radius:10px;flex-shrink:0;box-shadow:inset 0 0 0 1px rgba(0,0,0,.05);}
+  .lab .r{font-size:12px;font-weight:600;color:var(--color-fg1);}
+  .lab .v{font-size:11px;color:var(--color-fg3);font-family:var(--font-num);}
+</style></head><body>
+<p class="cap">使用状况状态色 (Room-usage status — calendar & availability)</p>
+<div class="grid">
+  <div class="tile"><span class="chip" style="background:var(--status-free-bg)"></span><span class="lab"><div class="r">空闲 Free</div><div class="v">bg #DCF0EA</div></span></div>
+  <div class="tile"><span class="chip" style="background:var(--status-busy-bg)"></span><span class="lab"><div class="r">已预约 Busy</div><div class="v">bg #F6E3DA</div></span></div>
+  <div class="tile"><span class="chip" style="background:var(--status-rest-bg)"></span><span class="lab"><div class="r">休息 Rest</div><div class="v">bg #F0EDE6</div></span></div>
+  <div class="tile"><span class="chip" style="background:var(--status-free-dot)"></span><span class="lab"><div class="r">空闲 dot</div><div class="v">#1FA386</div></span></div>
+  <div class="tile"><span class="chip" style="background:var(--status-busy-dot)"></span><span class="lab"><div class="r">已约 dot</div><div class="v">#CF7E5E</div></span></div>
+  <div class="tile"><span class="chip" style="background:var(--status-rest-dot)"></span><span class="lab"><div class="r">休息 dot</div><div class="v">#BBB6AB</div></span></div>
+</div>
+</body></html>

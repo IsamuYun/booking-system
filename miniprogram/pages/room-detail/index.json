@@ -1,0 +1,6 @@
+{
+  "navigationStyle": "custom",
+  "usingComponents": {
+    "usage-calendar": "/components/usage-calendar/index"
+  }
+}

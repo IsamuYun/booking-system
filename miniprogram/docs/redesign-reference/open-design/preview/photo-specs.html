@@ -1,0 +1,25 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8">
+<link rel="stylesheet" href="../ui_kits/miniprogram/kit.css">
+<style>
+  body{background:var(--color-bg);padding:24px;}
+  .cap{margin:0 0 14px;font-size:13px;color:var(--color-fg3);font-weight:500;}
+  .wrap{display:flex;gap:16px;align-items:stretch;}
+  .grid{flex:1;display:grid;grid-template-columns:1fr 1fr;gap:10px;align-content:start;}
+  .tile{background:var(--paper);border-radius:var(--r-md);padding:12px 14px;box-shadow:var(--shadow-card);display:flex;align-items:center;gap:11px;}
+  .ico{width:34px;height:34px;border-radius:9px;flex-shrink:0;background:var(--color-surface-tint);display:flex;align-items:center;justify-content:center;}
+  .tl .k{font-size:11px;color:var(--color-fg3);}
+  .tl .v{font-size:14px;font-weight:600;color:var(--color-fg1);}
+</style></head><body>
+<p class="cap">图片占位 + 规格卡片 (Photo placeholder · spec tiles)</p>
+<div class="wrap">
+  <div class="photo" style="width:150px;border-radius:var(--r-md);"><span class="ph-label">室内主图</span>
+    <svg width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="rgba(61,107,94,0.45)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 3h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2z"/><path d="M8.5 11a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z"/><path d="m21 15-5-5L5 21"/></svg>
+  </div>
+  <div class="grid">
+    <div class="tile"><span class="ico"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><path d="M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8z"/></svg></span><span class="tl"><div class="k">容纳</div><div class="v">1–2 人</div></span></div>
+    <div class="tile"><span class="ico"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3H5a2 2 0 0 0-2 2v3"/><path d="M21 8V5a2 2 0 0 0-2-2h-3"/><path d="M3 16v3a2 2 0 0 0 2 2h3"/><path d="M16 21h3a2 2 0 0 0 2-2v-3"/></svg></span><span class="tl"><div class="k">面积</div><div class="v">18㎡</div></span></div>
+    <div class="tile"><span class="ico"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 8a4 4 0 1 0 0 8 4 4 0 0 0 0-8z"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M2 12h2M20 12h2"/></svg></span><span class="tl"><div class="k">采光</div><div class="v">自然光</div></span></div>
+    <div class="tile"><span class="ico"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8.5a6.5 6.5 0 1 1 13 0c0 6-6 6-6 10a3.5 3.5 0 1 1-7 0"/><path d="M15 8.5a2.5 2.5 0 0 0-5 0v1a2 2 0 1 1 0 4"/></svg></span><span class="tl"><div class="k">隔音</div><div class="v">良好</div></span></div>
+  </div>
+</div>
+</body></html>

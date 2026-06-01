@@ -1,0 +1,107 @@
+<view class="about-page">
+  <navigation-bar title="关于诊所" back="{{false}}" background="#ffffff" color="#1a2421"></navigation-bar>
+
+  <scroll-view class="about-scroll" scroll-y="true" enhanced="true" show-scrollbar="{{false}}">
+    <view class="about-content">
+      <view class="about-hero">
+        <image class="about-photo" src="/images/about.jpeg" mode="aspectFill"></image>
+      </view>
+
+      <view class="quote-block">
+        <view class="quote-icon">
+          <view class="mini-icon mini-icon-ear"></view>
+        </view>
+        <text class="quote-text">“{{clinic.philosophy}}”</text>
+      </view>
+
+      <view class="section-head">
+        <text class="section-title">我们是谁</text>
+      </view>
+
+      <view class="app-card intro-card">
+        <text class="body-text">{{clinic.intro}}</text>
+        <view class="divider"></view>
+        <view class="about-stats">
+          <view class="about-stat">
+            <text class="stat-value">{{clinic.established}}</text>
+            <text class="stat-label">创立年份</text>
+          </view>
+          <view class="stat-divider"></view>
+          <view class="about-stat">
+            <text class="stat-value">{{clinic.stats.counselors}}</text>
+            <text class="stat-label">注册咨询师</text>
+          </view>
+          <view class="stat-divider"></view>
+          <view class="about-stat">
+            <text class="stat-value">{{clinic.stats.rooms}}</text>
+            <text class="stat-label">咨询室</text>
+          </view>
+        </view>
+      </view>
+
+      <view class="section-head">
+        <text class="section-title">资质与伦理</text>
+      </view>
+
+      <view class="app-card credential-list">
+        <view wx:for="{{clinic.credentials}}" wx:key="name" class="credential-row {{item.last ? 'last' : ''}}">
+          <view class="check-icon">
+            <view class="mini-icon mini-icon-check"></view>
+          </view>
+          <text class="credential-text">{{item.name}}</text>
+        </view>
+      </view>
+
+      <view class="section-head">
+        <text class="section-title">到访与联系</text>
+      </view>
+
+      <view class="app-card info-list">
+        <view class="info-row" bindtap="navigateClinic" hover-class="is-pressed">
+          <view class="info-icon-shell">
+            <view class="mini-icon mini-icon-pin"></view>
+          </view>
+          <text class="info-label">地址</text>
+          <text class="info-value">{{clinic.shortAddress}}</text>
+        </view>
+        <view class="info-row">
+          <view class="info-icon-shell">
+            <view class="mini-icon mini-icon-clock"></view>
+          </view>
+          <text class="info-label">营业时间</text>
+          <text class="info-value">{{clinic.hours}}</text>
+        </view>
+        <view class="info-row last" bindtap="callClinic" hover-class="is-pressed">
+          <view class="info-icon-shell">
+            <view class="mini-icon mini-icon-phone"></view>
+          </view>
+          <text class="info-label">预约电话</text>
+          <text class="info-value">{{clinic.phone}}</text>
+        </view>
+      </view>
+
+      <view class="visit-action">
+        <button class="primary-btn visit-btn" bindtap="navigateClinic" hover-class="is-pressed">
+          <view class="mini-icon mini-icon-navigate"></view>
+          <text>导航前往诊所</text>
+        </button>
+      </view>
+
+      <view class="bottom-space"></view>
+    </view>
+  </scroll-view>
+
+  <view class="bottom-nav">
+    <view class="bottom-nav-item" bindtap="goHome" hover-class="is-pressed">
+      <text>首页</text>
+    </view>
+    <view class="bottom-nav-sep"></view>
+    <view class="bottom-nav-item" bindtap="goRooms" hover-class="is-pressed">
+      <text>咨询室</text>
+    </view>
+    <view class="bottom-nav-sep"></view>
+    <view class="bottom-nav-item active">
+      <text>关于</text>
+    </view>
+  </view>
+</view>

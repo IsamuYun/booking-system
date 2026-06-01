@@ -1,0 +1,60 @@
+<view class="rooms-page">
+  <navigation-bar title="咨询室" back="{{false}}" background="#ffffff" color="#1a2421"></navigation-bar>
+
+  <scroll-view class="rooms-scroll" scroll-y="true" enhanced="true" show-scrollbar="{{false}}">
+    <view class="rooms-content">
+      <view class="rooms-intro">
+        <text>共 {{rooms.length}} 间咨询室。点击查看室内环境与近 30 天的使用状况。</text>
+      </view>
+
+      <view class="room-list">
+        <view
+          wx:for="{{rooms}}"
+          wx:key="id"
+          class="app-card room-list-card"
+          data-id="{{item.id}}"
+          bindtap="openRoom"
+          hover-class="is-pressed"
+        >
+          <image class="room-list-photo" src="{{item.image}}" mode="aspectFill"></image>
+          <view class="room-list-body">
+            <view class="room-list-head">
+              <view class="room-name-group">
+                <text class="room-name">{{item.name}}</text>
+                <text class="room-en">{{item.en}}</text>
+              </view>
+              <text class="status-pill status-{{item.status}}">{{item.statusText}}</text>
+            </view>
+            <text class="room-desc">{{item.desc}}</text>
+            <view class="room-tags">
+              <view class="chip chip-line room-tag">
+                <view class="mini-icon mini-icon-users"></view>
+                <text>{{item.cap}}</text>
+              </view>
+              <view class="chip chip-line room-tag">
+                <view class="mini-icon mini-icon-area"></view>
+                <text>{{item.area}}</text>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+
+      <view class="bottom-space"></view>
+    </view>
+  </scroll-view>
+
+  <view class="bottom-nav">
+    <view class="bottom-nav-item" bindtap="goHome" hover-class="is-pressed">
+      <text>首页</text>
+    </view>
+    <view class="bottom-nav-sep"></view>
+    <view class="bottom-nav-item active">
+      <text>咨询室</text>
+    </view>
+    <view class="bottom-nav-sep"></view>
+    <view class="bottom-nav-item" bindtap="goAbout" hover-class="is-pressed">
+      <text>关于</text>
+    </view>
+  </view>
+</view>

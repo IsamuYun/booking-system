@@ -125,9 +125,9 @@ function MainApp() {
             </div>
             <div className="min-w-0">
               <p className="text-sm font-medium text-gray-900 truncate">
-                {user?.display_name || user?.username}
+                {user?.name || user?.phone}
               </p>
-              <p className="text-xs text-gray-400 truncate">{user?.username}</p>
+              <p className="text-xs text-gray-400 truncate">{user?.phone}</p>
             </div>
           </div>
           <button

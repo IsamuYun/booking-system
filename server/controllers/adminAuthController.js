@@ -1,39 +1,39 @@
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
-const { AdminUser, SystemConfig } = require('../models/init');
+const { User, SystemConfig } = require('../models/init');
 
 const JWT_SECRET = process.env.ADMIN_JWT_SECRET || 'admin_jwt_secret_change_in_production';
 
-// POST /admin/auth/login
+// POST /admin/auth/login —— 手机号 + 密码，仅 role='admin' 的 User 可登录
 exports.login = async (req, res) => {
     try {
-        const { username, password } = req.body;
-        if (!username || !password) {
-            return res.status(400).json({ message: '用户名和密码不能为空' });
+        const { phone, password } = req.body;
+        if (!phone || !password) {
+            return res.status(400).json({ message: '手机号和密码不能为空' });
         }
 
-        const user = await AdminUser.findOne({ where: { username } });
-        if (!user) {
-            return res.status(401).json({ message: '用户名或密码错误' });
+        const user = await User.findOne({ where: { phone } });
+        if (!user || user.role !== 'admin' || !user.password_hash) {
+            return res.status(401).json({ message: '手机号或密码错误' });
         }
 
         const valid = await bcrypt.compare(password, user.password_hash);
         if (!valid) {
-            return res.status(401).json({ message: '用户名或密码错误' });
+            return res.status(401).json({ message: '手机号或密码错误' });
         }
 
-        // 从数据库读取 session 有效期
         const config = await SystemConfig.findOne({ where: { key: 'session_ttl' } });
         const ttl = config ? parseInt(config.value, 10) : 3600;
 
         const payload = {
             id: user.id,
-            username: user.username,
-            display_name: user.display_name,
+            phone: user.phone,
+            name: user.name,
+            role: user.role,
         };
         const token = jwt.sign(payload, JWT_SECRET, { expiresIn: ttl });
 
-        console.log(`[Auth] 管理员 ${username} 登录成功，session TTL=${ttl}s`);
+        console.log(`[Auth] 管理员 ${phone} 登录成功，session TTL=${ttl}s`);
         res.json({
             token,
             user: payload,

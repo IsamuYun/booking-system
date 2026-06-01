@@ -3,7 +3,7 @@ import { useAuth } from '../context/AuthContext';
 
 export default function Login() {
   const { login } = useAuth();
-  const [form, setForm]     = useState({ username: '', password: '' });
+  const [form, setForm]     = useState({ phone: '', password: '' });
   const [error, setError]   = useState('');
   const [loading, setLoading] = useState(false);
   const [showPwd, setShowPwd] = useState(false);
@@ -48,14 +48,14 @@ export default function Login() {
           <h2 className="text-base font-semibold text-gray-800 mb-6">登录账号</h2>
 
           <form onSubmit={submit} className="space-y-4">
-            {/* Username */}
+            {/* Phone */}
             <div>
-              <label className="label">用户名</label>
+              <label className="label">手机号</label>
               <div className="relative">
                 <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400">
                   <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
-                      d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                      d="M3 5a2 2 0 012-2h2.28a1 1 0 01.95.68l1.5 4.49a1 1 0 01-.5 1.21l-2.26 1.13a11 11 0 005.52 5.52l1.13-2.26a1 1 0 011.21-.5l4.49 1.5a1 1 0 01.68.95V19a2 2 0 01-2 2h-1C9.72 21 3 14.28 3 6V5z" />
                   </svg>
                 </span>
                 <input
@@ -63,9 +63,9 @@ export default function Login() {
                   autoFocus
                   autoComplete="username"
                   className="input pl-9"
-                  placeholder="请输入用户名"
-                  value={form.username}
-                  onChange={(e) => setForm((f) => ({ ...f, username: e.target.value }))}
+                  placeholder="请输入手机号"
+                  value={form.phone}
+                  onChange={(e) => setForm((f) => ({ ...f, phone: e.target.value }))}
                 />
               </div>
             </div>

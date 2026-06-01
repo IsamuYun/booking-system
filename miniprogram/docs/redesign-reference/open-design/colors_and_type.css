@@ -1,0 +1,152 @@
+/* ============================================================
+   Lisening 倾听 — Design Tokens
+   Colors + Type for a psychological-counseling-clinic WeChat
+   Mini Program. Calm, warm, humane, trustworthy.
+
+   NOTE: This is an INFERRED starting system — there were no
+   source materials. Replace tokens with the clinic's real
+   brand values once available.
+   ============================================================ */
+
+/* Webfonts — Chinese CJK fonts are large, so we load Google's
+   subsetted versions over the network rather than bundling
+   multi-MB .ttf files into /fonts. Swap for licensed brand
+   fonts if the clinic has them. */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&family=Noto+Serif+SC:wght@400;500;600;700&display=swap');
+
+:root {
+  /* ---------- BASE COLOR PALETTE ---------- */
+
+  /* Primary — vivid teal-green (#148F77). The brand color; replaces
+     WeChat's system #07C160. Theme: teal + white. */
+  --green-900: #073A30;
+  --green-700: #0C5F4F;   /* deep — headings on tint, pressed */
+  --green-600: #0F7763;
+  --green-500: #148F77;   /* PRIMARY brand green */
+  --green-400: #40AD96;
+  --green-300: #79CBB9;
+  --green-200: #AEE1D4;
+  --green-100: #D8F0E9;   /* tint fills, chips */
+  --green-50:  #EEF8F4;   /* faint section wash */
+
+  /* Warm accent — clay / terracotta. Human warmth, used sparingly
+     for highlights and the "busy" room state. */
+  --clay-600: #A9573B;
+  --clay-500: #C26B4C;
+  --clay-400: #D08A6E;
+  --clay-300: #E2B4A1;
+  --clay-100: #F5E6DE;
+
+  /* Neutrals — the UI sits on white (#FFFFFF). Cards float on white
+     via soft shadow + a faint teal hairline ring. */
+  --cream:        #FFFFFF;  /* app background (white) */
+  --paper:        #FFFFFF;  /* cards / sheets */
+  --ink:          #1A2421;  /* fg1 — primary text */
+  --ink-2:        #4E5A56;  /* fg2 — secondary text */
+  --ink-3:        #828D89;  /* fg3 — tertiary / captions */
+  --ink-4:        #AEB6B2;  /* fg4 — placeholder / disabled */
+  --line:         #E7EDEB;  /* hairline borders / dividers */
+  --line-strong:  #D5DEDB;  /* stronger separators */
+
+  /* ---------- SEMANTIC COLOR ROLES ---------- */
+  --color-bg:            var(--cream);
+  --color-surface:       var(--paper);
+  --color-surface-tint:  var(--green-50);
+  --color-fg1:           var(--ink);
+  --color-fg2:           var(--ink-2);
+  --color-fg3:           var(--ink-3);
+  --color-fg-on-brand:   #FFFFFF;
+  --color-primary:       var(--green-500);
+  --color-primary-deep:  var(--green-700);
+  --color-primary-tint:  var(--green-100);
+  --color-accent:        var(--clay-500);
+  --color-border:        var(--line);
+  --color-border-strong: var(--line-strong);
+  --color-link:          var(--green-600);
+
+  /* Room-usage status (calendar / availability) */
+  --status-free-fg: #0F7763;   --status-free-bg: #DCF0EA;   --status-free-dot: #1FA386;
+  --status-busy-fg: #B0593C;   --status-busy-bg: #F6E3DA;   --status-busy-dot: #CF7E5E;
+  --status-rest-fg: #8C887E;   --status-rest-bg: #F0EDE6;   --status-rest-dot: #BBB6AB;
+  --status-today-ring: var(--green-500);
+
+  /* WeChat system colors (for native-feeling controls) */
+  --wx-green:  #07C160;   /* used only where mimicking WeChat-native UI */
+  --wx-bg:     #EDEDED;
+
+  /* ---------- TYPE FAMILIES ---------- */
+  --font-sans: "Noto Sans SC", -apple-system, "PingFang SC", "Microsoft YaHei", system-ui, sans-serif;
+  --font-serif: "Noto Serif SC", "Songti SC", "STSong", Georgia, serif;
+  --font-num: "Noto Sans SC", ui-monospace, "SF Mono", Menlo, monospace; /* tabular numerals */
+
+  /* ---------- TYPE SCALE (mobile / mini-program px) ---------- */
+  --fs-display: 30px;  --lh-display: 1.25;  /* clinic name / hero */
+  --fs-h1: 22px;       --lh-h1: 1.35;       /* page title (serif) */
+  --fs-h2: 17px;       --lh-h2: 1.4;        /* section header */
+  --fs-h3: 15px;       --lh-h3: 1.45;       /* card title */
+  --fs-body: 15px;     --lh-body: 1.6;      /* paragraph */
+  --fs-sec: 13px;      --lh-sec: 1.5;       /* secondary */
+  --fs-caption: 12px;  --lh-caption: 1.4;   /* caption / meta */
+  --fs-navtitle: 17px;                      /* WeChat nav bar title */
+
+  /* ---------- RADII ---------- */
+  --r-xs: 6px;
+  --r-sm: 8px;
+  --r-md: 12px;   /* default card radius */
+  --r-lg: 16px;
+  --r-xl: 20px;
+  --r-pill: 999px;
+
+  /* ---------- SPACING (4px base) ---------- */
+  --sp-1: 4px;  --sp-2: 8px;  --sp-3: 12px; --sp-4: 16px;
+  --sp-5: 20px; --sp-6: 24px; --sp-8: 32px; --sp-10: 40px;
+
+  /* ---------- ELEVATION ---------- */
+  --shadow-card:  0 0 0 1px rgba(15,119,99,0.06), 0 1px 2px rgba(8,40,33,0.04), 0 4px 16px rgba(8,40,33,0.06);
+  --shadow-raise: 0 0 0 1px rgba(15,119,99,0.06), 0 2px 8px rgba(8,40,33,0.07), 0 10px 28px rgba(8,40,33,0.09);
+  --shadow-float: 0 6px 24px rgba(8,40,33,0.14);
+
+  /* ---------- MOTION ---------- */
+  --ease-standard: cubic-bezier(0.33, 0.0, 0.2, 1);
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --dur-fast: 140ms;
+  --dur-base: 220ms;
+  --dur-slow: 360ms;
+}
+
+/* ============================================================
+   SEMANTIC TYPE CLASSES — apply directly to elements
+   ============================================================ */
+.t-display {
+  font-family: var(--font-serif); font-weight: 600;
+  font-size: var(--fs-display); line-height: var(--lh-display);
+  color: var(--color-fg1); letter-spacing: 0.01em;
+}
+.t-h1 {
+  font-family: var(--font-serif); font-weight: 600;
+  font-size: var(--fs-h1); line-height: var(--lh-h1); color: var(--color-fg1);
+}
+.t-h2 {
+  font-family: var(--font-sans); font-weight: 700;
+  font-size: var(--fs-h2); line-height: var(--lh-h2); color: var(--color-fg1);
+}
+.t-h3 {
+  font-family: var(--font-sans); font-weight: 500;
+  font-size: var(--fs-h3); line-height: var(--lh-h3); color: var(--color-fg1);
+}
+.t-body {
+  font-family: var(--font-sans); font-weight: 400;
+  font-size: var(--fs-body); line-height: var(--lh-body); color: var(--color-fg2);
+}
+.t-sec {
+  font-family: var(--font-sans); font-weight: 400;
+  font-size: var(--fs-sec); line-height: var(--lh-sec); color: var(--color-fg2);
+}
+.t-caption {
+  font-family: var(--font-sans); font-weight: 400;
+  font-size: var(--fs-caption); line-height: var(--lh-caption); color: var(--color-fg3);
+}
+.t-num {
+  font-family: var(--font-num); font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum";
+}

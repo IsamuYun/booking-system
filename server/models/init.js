@@ -27,6 +27,12 @@ const User = sequelize.define('User', {
     allowNull: false,
     defaultValue: '',
   },
+  // 仅 role='admin' 的用户登录 Web 管理后台时使用；小程序用户保持为空
+  password_hash: {
+    type: DataTypes.STRING,
+    allowNull: true,
+    defaultValue: null,
+  },
 });
 
 // 2. 咨询师档案表 - Counselor - 12/18 新增
@@ -219,24 +225,7 @@ RecurringRule.belongsTo(Room, {
   targetKey: 'id'         // 指向 Room 表的 id 字段
 });
 
-// 5. 管理后台账号表
-const AdminUser = sequelize.define('AdminUser', {
-  username: {
-    type: DataTypes.STRING,
-    allowNull: false,
-    unique: true,
-  },
-  password_hash: {
-    type: DataTypes.STRING,
-    allowNull: false,
-  },
-  display_name: {
-    type: DataTypes.STRING,
-    defaultValue: '',
-  },
-});
-
-// 6. 系统配置表（key-value）
+// 5. 系统配置表（key-value）
 const SystemConfig = sequelize.define('SystemConfig', {
   key: {
     type: DataTypes.STRING,
@@ -254,4 +243,4 @@ const SystemConfig = sequelize.define('SystemConfig', {
 });
 
 // 导出模型
-module.exports = { User, Counselor, Room, Booking, RecurringRule, AdminUser, SystemConfig, sequelize, Op };
+module.exports = { User, Counselor, Room, Booking, RecurringRule, SystemConfig, sequelize, Op };

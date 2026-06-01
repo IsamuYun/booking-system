@@ -8,47 +8,25 @@ Page({
 
   },
 
-  // 跳转到预约页面 (原本的首页)
-  goToBooking() {
+  goToRooms() {
     wx.navigateTo({
-      url: "/pages/index/index",
+      url: "/pages/rooms/index",
     });
   },
 
-  goToAdmin() {
+  goToAbout() {
     wx.navigateTo({
-      url: "/pages/admin/index",
+      url: "/pages/about/index",
     });
   },
 
-  // 跳转到我的预约
-  goToMyBooking() {
+  goToRoomDetail(event) {
+    const id = event.currentTarget.dataset.id;
+
     wx.navigateTo({
-      url: "/pages/my/index",
+      url: `/pages/room-detail/index?id=${id}`,
     });
   },
-
-  // 跳转到定期预约
-  goToRecurring() {
-    wx.navigateTo({
-      url: "/pages/recurring/index",
-    });
-  },
-
-  // 
-  goToImport() {
-    wx.navigateTo({
-      url: "/pages/import/index",
-    })
-  },
-
-  //
-  goToNewBooking() {
-    wx.navigateTo({
-      url: "/pages/booking/index",
-    });
-  },
-  
 
   /**
    * Lifecycle function--Called when page load

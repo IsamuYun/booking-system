@@ -1,0 +1,14 @@
+{
+  "name": "miniprogram-tests",
+  "version": "1.0.0",
+  "private": true,
+  "description": "聆心预约小程序自动化测试 (miniprogram-automator + Jest)",
+  "scripts": {
+    "test": "jest --runInBand",
+    "test:smoke": "jest --runInBand cases/smoke"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0",
+    "miniprogram-automator": "^0.11.0"
+  }
+}
