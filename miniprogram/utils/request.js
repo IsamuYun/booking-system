@@ -1,12 +1,18 @@
 // 真机调试需勾选"不校验合法域名"
 const { BASE_URL } = require("./env");
 
+function buildRequestUrl(path) {
+    const baseUrl = BASE_URL.replace(/\/+$/, '');
+    const requestPath = String(path || '').replace(/^\/+/, '');
+    return `${baseUrl}/${requestPath}`;
+}
+
 function request(url, method = "GET", data = {}, options = {}) {
     const token = wx.getStorageSync('token');
 
     return new Promise((resolve, reject) => {
         wx.request({
-            url: BASE_URL + url,
+            url: buildRequestUrl(url),
             method: method,
             data: data,
             timeout: options.timeout,

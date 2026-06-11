@@ -117,14 +117,25 @@ exports.chat = async (req, res) => {
 
     let reply = null;
     let source = 'local';
+    let sourceDetail = 'local_fallback';
+    const externalConfigured = Boolean(process.env.AI_CHAT_API_URL && process.env.AI_CHAT_API_KEY);
 
-    try {
-      reply = await requestExternalAi(message, req.body.messages);
-      if (reply) {
-        source = 'external';
+    if (externalConfigured) {
+      try {
+        reply = await requestExternalAi(message, req.body.messages);
+        if (reply) {
+          source = 'external';
+          sourceDetail = 'external_ok';
+        } else {
+          sourceDetail = 'external_empty_reply';
+        }
+      } catch (error) {
+        sourceDetail = 'external_error';
+        console.error('外部 AI 服务请求失败，使用本地回复:', error.message);
       }
-    } catch (error) {
-      console.error('外部 AI 服务请求失败，使用本地回复:', error.message);
+    } else {
+      sourceDetail = 'not_configured';
+      console.warn('外部 AI 配置缺失，使用本地回复');
     }
 
     if (!reply) {
@@ -136,6 +147,7 @@ exports.chat = async (req, res) => {
       data: {
         reply,
         source,
+        source_detail: sourceDetail,
       },
     });
   } catch (error) {
