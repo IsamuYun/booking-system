@@ -12,6 +12,7 @@ const authController = require('../controllers/authController');
 const reportController = require('../controllers/reportController');
 const importController = require('../controllers/importController');
 const adminAuthController = require('../controllers/adminAuthController');
+const aiController = require('../controllers/aiController');
 const adminAuth = require('../middleware/adminAuth');
 
 const xlsUpload = multer({
@@ -31,6 +32,7 @@ router.get('/admin/auth/me', adminAuth, adminAuthController.me);
 
 // ── 小程序兼容路由（不加 auth，避免破坏小程序） ─────────────────
 router.get('/rooms', roomController.getRooms);
+router.get('/rooms/:room_id/usage', roomController.getRoomUsage);
 router.get('/counselors', counselorController.getCounselors);
 router.post('/booking', bookingController.createBooking);
 router.get('/bookings/daily-grouped', bookingController.getDailyGrouped);
@@ -43,6 +45,7 @@ router.get('/recurring/rules/delete/:id', recurringController.deleteRule);
 router.post('/recurring/generate', recurringController.generateBookings);
 router.post('/login', authController.loginByPhone);
 router.post('/register', authController.register);
+router.post('/ai/chat', aiController.chat);
 
 // ── Web 管理后台专用路由（需要 adminAuth） ───────────────────────
 

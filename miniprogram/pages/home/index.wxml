@@ -29,7 +29,7 @@
       </view>
 
       <view class="room-grid">
-        <view class="room-mini-card" bindtap="goToRoomDetail" data-id="jingshui" hover-class="is-pressed">
+        <view class="room-mini-card" bindtap="goToRoomDetail" data-id="1" hover-class="is-pressed">
           <image class="room-mini-photo" src="../../images/counselling-room-1.png" mode="aspectFill"></image>
           <view class="status-pill status-free room-status">空闲</view>
           <view class="room-mini-body">
@@ -50,7 +50,7 @@
           </view>
         </view>
 
-        <view class="room-mini-card" bindtap="goToRoomDetail" data-id="nuanyang" hover-class="is-pressed">
+        <view class="room-mini-card" bindtap="goToRoomDetail" data-id="2" hover-class="is-pressed">
           <image class="room-mini-photo" src="../../images/counselling-room-2.png" mode="aspectFill"></image>
           <view class="status-pill status-busy room-status">已预约</view>
           <view class="room-mini-body">
@@ -71,7 +71,7 @@
           </view>
         </view>
 
-        <view class="room-mini-card" bindtap="goToRoomDetail" data-id="muyu" hover-class="is-pressed">
+        <view class="room-mini-card" bindtap="goToRoomDetail" data-id="3" hover-class="is-pressed">
           <image class="room-mini-photo" src="../../images/counselling-room-3.png" mode="aspectFill"></image>
           <view class="status-pill status-free room-status">空闲</view>
           <view class="room-mini-body">
@@ -92,7 +92,7 @@
           </view>
         </view>
 
-        <view class="room-mini-card" bindtap="goToRoomDetail" data-id="shayou" hover-class="is-pressed">
+        <view class="room-mini-card" bindtap="goToRoomDetail" data-id="5" hover-class="is-pressed">
           <image class="room-mini-photo" src="../../images/multi-room-2.jpg" mode="aspectFill"></image>
           <view class="status-pill status-rest room-status">休息</view>
           <view class="room-mini-body">
@@ -113,7 +113,7 @@
           </view>
         </view>
 
-        <view class="room-mini-card room-mini-card-wide" bindtap="goToRoomDetail" data-id="tuanti" hover-class="is-pressed">
+        <view class="room-mini-card room-mini-card-wide" bindtap="goToRoomDetail" data-id="4" hover-class="is-pressed">
           <image class="room-mini-photo room-mini-photo-wide" src="../../images/multi-room-1.jpg" mode="aspectFill"></image>
           <view class="status-pill status-free room-status">空闲</view>
           <view class="room-mini-body">
@@ -133,6 +133,21 @@
             </view>
           </view>
         </view>
+      </view>
+
+      <view class="section-head admin-head">
+        <text class="section-title">智能助手</text>
+      </view>
+
+      <view class="app-card assistant-card" bindtap="goToChat" hover-class="is-pressed">
+        <view class="assistant-card-icon">
+          <view class="mini-icon mini-icon-chat"></view>
+        </view>
+        <view class="assistant-card-main">
+          <text class="assistant-card-title">AI 咨询助手</text>
+          <text class="assistant-card-desc">询问预约、房间、收费与到访准备</text>
+        </view>
+        <text class="assistant-card-link">进入</text>
       </view>
 
       <view class="section-head admin-head">
@@ -187,6 +202,10 @@
     <view class="bottom-nav-sep"></view>
     <view class="bottom-nav-item" bindtap="goToRooms" hover-class="is-pressed">
       <text>咨询室</text>
+    </view>
+    <view class="bottom-nav-sep"></view>
+    <view class="bottom-nav-item" bindtap="goToChat" hover-class="is-pressed">
+      <text>AI助手</text>
     </view>
     <view class="bottom-nav-sep"></view>
     <view class="bottom-nav-item" bindtap="goToAbout" hover-class="is-pressed">

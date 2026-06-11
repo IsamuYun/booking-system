@@ -22,6 +22,12 @@ Page({
     });
   },
 
+  goChat() {
+    wx.redirectTo({
+      url: "/pages/chat/index",
+    });
+  },
+
   navigateClinic() {
     wx.showToast({
       title: "导航信息待接入",

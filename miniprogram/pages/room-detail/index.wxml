@@ -70,7 +70,9 @@
     <view class="section-head">
       <text class="section-title">咨询室使用状况</text>
     </view>
-    <usage-calendar></usage-calendar>
+    <view wx:if="{{loadingUsage}}" class="usage-inline-message">加载使用状况中...</view>
+    <usage-calendar usage-days="{{usageDays}}"></usage-calendar>
+    <view wx:if="{{usageError}}" class="usage-inline-message error">{{usageError}}</view>
 
     <view class="detail-note-panel">
       <text class="detail-note-text">使用状况仅供参考，具体安排请以前台确认为准。</text>

@@ -23,4 +23,10 @@ Page({
       url: "/pages/about/index",
     });
   },
+
+  goChat() {
+    wx.redirectTo({
+      url: "/pages/chat/index",
+    });
+  },
 });

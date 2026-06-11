@@ -212,6 +212,16 @@ page {
   padding: 0 32rpx;
 }
 
+.usage-inline-message {
+  margin: 16rpx 32rpx 0;
+  color: var(--ink-3);
+  font-size: 24rpx;
+}
+
+.usage-inline-message.error {
+  color: var(--busy-fg);
+}
+
 .detail-note-panel {
   padding: 40rpx 32rpx 0;
 }

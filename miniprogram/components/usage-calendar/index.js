@@ -79,7 +79,32 @@ function buildDay(offset, index) {
   return day;
 }
 
+function buildFallbackDays() {
+  return Array.from({ length: 31 }, (_, index) => buildDay(index - TODAY_INDEX, index));
+}
+
+function normalizeDays(days) {
+  const selectedIndex = days.findIndex((day) => day.is_today || day.offset === 0 || day.selected);
+  const safeSelectedIndex = selectedIndex >= 0 ? selectedIndex : 0;
+
+  return days.map((day, index) => ({
+    ...day,
+    index,
+    selected: index === safeSelectedIndex,
+  }));
+}
+
 Component({
+  properties: {
+    usageDays: {
+      type: Array,
+      value: [],
+      observer(value) {
+        this.applyDays(value);
+      },
+    },
+  },
+
   data: {
     days: [],
     selectedDay: null,
@@ -93,16 +118,24 @@ Component({
 
   lifetimes: {
     attached() {
-      const days = Array.from({ length: 31 }, (_, index) => buildDay(index - TODAY_INDEX, index));
-
-      this.setData({
-        days,
-        selectedDay: days[TODAY_INDEX],
-      });
+      this.applyDays(this.properties.usageDays);
     },
   },
 
   methods: {
+    applyDays(usageDays) {
+      const sourceDays = Array.isArray(usageDays) && usageDays.length > 0
+        ? usageDays
+        : buildFallbackDays();
+      const days = normalizeDays(sourceDays);
+      const selectedDay = days.find((day) => day.selected) || days[0];
+
+      this.setData({
+        days,
+        selectedDay,
+      });
+    },
+
     selectDay(event) {
       const index = Number(event.currentTarget.dataset.index);
       const days = this.data.days.map((day) => ({

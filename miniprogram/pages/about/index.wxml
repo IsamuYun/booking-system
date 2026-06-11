@@ -100,6 +100,10 @@
       <text>咨询室</text>
     </view>
     <view class="bottom-nav-sep"></view>
+    <view class="bottom-nav-item" bindtap="goChat" hover-class="is-pressed">
+      <text>AI助手</text>
+    </view>
+    <view class="bottom-nav-sep"></view>
     <view class="bottom-nav-item active">
       <text>关于</text>
     </view>

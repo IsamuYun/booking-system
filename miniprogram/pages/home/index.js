@@ -20,6 +20,12 @@ Page({
     });
   },
 
+  goToChat() {
+    wx.navigateTo({
+      url: "/pages/chat/index",
+    });
+  },
+
   goToRoomDetail(event) {
     const id = event.currentTarget.dataset.id;
 

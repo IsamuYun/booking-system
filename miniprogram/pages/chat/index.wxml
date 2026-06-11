@@ -1,0 +1,110 @@
+<view class="chat-page">
+  <navigation-bar title="AI 助手" back="{{false}}" background="#ffffff" color="#1a2421"></navigation-bar>
+
+  <scroll-view
+    class="chat-scroll"
+    scroll-y="true"
+    enhanced="true"
+    show-scrollbar="{{false}}"
+    scroll-into-view="{{scrollTarget}}"
+  >
+    <view class="chat-content">
+      <view class="assistant-head">
+        <view class="assistant-mark">
+          <view class="mini-icon mini-icon-chat"></view>
+        </view>
+        <view class="assistant-copy">
+          <text class="assistant-title">智能咨询助手</text>
+          <text class="assistant-subtitle">可询问预约、房间、到访、收费与咨询前准备</text>
+        </view>
+      </view>
+
+      <view class="quick-panel">
+        <button
+          wx:for="{{quickPrompts}}"
+          wx:key="text"
+          class="quick-chip"
+          data-text="{{item.text}}"
+          bindtap="sendQuickPrompt"
+          hover-class="is-pressed"
+          disabled="{{sending}}"
+        >
+          <text>{{item.text}}</text>
+        </button>
+      </view>
+
+      <view class="message-list">
+        <view
+          wx:for="{{messages}}"
+          wx:key="id"
+          id="message-{{item.id}}"
+          class="message-row message-{{item.role}}"
+        >
+          <view wx:if="{{item.role === 'assistant'}}" class="avatar assistant-avatar">
+            <view class="mini-icon mini-icon-chat"></view>
+          </view>
+          <view class="message-bubble">
+            <text class="message-text">{{item.text}}</text>
+            <text wx:if="{{item.note}}" class="message-note">{{item.note}}</text>
+          </view>
+        </view>
+
+        <view wx:if="{{sending}}" id="message-typing" class="message-row message-assistant">
+          <view class="avatar assistant-avatar">
+            <view class="mini-icon mini-icon-chat"></view>
+          </view>
+          <view class="message-bubble typing-bubble">
+            <view class="typing-dot"></view>
+            <view class="typing-dot"></view>
+            <view class="typing-dot"></view>
+          </view>
+        </view>
+      </view>
+
+      <view class="chat-bottom-space"></view>
+    </view>
+  </scroll-view>
+
+  <view class="chat-input-bar">
+    <view class="input-shell">
+      <textarea
+        class="chat-input"
+        value="{{inputValue}}"
+        placeholder="输入你的问题"
+        adjust-position="{{false}}"
+        cursor-spacing="24"
+        maxlength="-1"
+        show-confirm-bar="{{false}}"
+        bindinput="onInput"
+        disabled="{{sending}}"
+      ></textarea>
+      <button
+        class="send-btn {{canSend && !sending ? '' : 'disabled'}}"
+        bindtap="sendCurrentMessage"
+        hover-class="is-pressed"
+        disabled="{{!canSend || sending}}"
+        aria-label="发送"
+      >
+        <view class="mini-icon mini-icon-send"></view>
+      </button>
+    </view>
+  </view>
+
+  <view class="bottom-nav">
+    <view class="bottom-nav-item" bindtap="goHome" hover-class="is-pressed">
+      <text>首页</text>
+    </view>
+    <view class="bottom-nav-sep"></view>
+    <view class="bottom-nav-item" bindtap="goRooms" hover-class="is-pressed">
+      <text>咨询室</text>
+    </view>
+    <view class="bottom-nav-sep"></view>
+    <view class="bottom-nav-item active">
+      <text>AI助手</text>
+    </view>
+    <view class="bottom-nav-sep"></view>
+    <view class="bottom-nav-item" bindtap="goAbout" hover-class="is-pressed">
+      <text>关于</text>
+    </view>
+  </view>
+</view>

@@ -3,6 +3,7 @@
     "pages/home/index",
     "pages/rooms/index",
     "pages/room-detail/index",
+    "pages/chat/index",
     "pages/about/index",
     "pages/logs/logs"
     

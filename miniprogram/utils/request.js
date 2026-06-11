@@ -1,8 +1,7 @@
 // 真机调试需勾选"不校验合法域名"
-const BASE_URL = "http://192.168.0.22:5100";
-//const BASE_URL = "http://124.220.171.165:3000";
+const { BASE_URL } = require("./env");
 
-function request(url, method = "GET", data = {}) {
+function request(url, method = "GET", data = {}, options = {}) {
     const token = wx.getStorageSync('token');
 
     return new Promise((resolve, reject) => {
@@ -10,6 +9,7 @@ function request(url, method = "GET", data = {}) {
             url: BASE_URL + url,
             method: method,
             data: data,
+            timeout: options.timeout,
             header: {
                 'Content-Type': 'application/json',
                 // 如果有Token, 格式通常是“Bearer <token>”
@@ -22,15 +22,19 @@ function request(url, method = "GET", data = {}) {
                 }
                 else {
                     // 如果 Token 过期(401)，由调用页提示用户联系前台处理权限
-                    wx.showToast({
-                      title: "请求失败: " + (res.data.message || res.statusCode),
-                      icon: "none"
-                    })
+                    if (!options.silent) {
+                      wx.showToast({
+                        title: "请求失败: " + (res.data.message || res.statusCode),
+                        icon: "none"
+                      })
+                    }
                     reject(res.data);
                 }
             },
             fail: (err) => {
-              wx.showToast({ title: "网络连接失败", icon: "none" });  
+              if (!options.silent) {
+                wx.showToast({ title: "网络连接失败", icon: "none" });
+              }
               reject(err);
             }
         });
@@ -39,8 +43,8 @@ function request(url, method = "GET", data = {}) {
 
 module.exports = {
   BASE_URL,
-  get: (url, data) => request(url, 'GET', data),
-  post: (url, data) => request(url, 'POST', data),
-  put: (url, data) => request(url, 'PUT', data),
-  del: (url, data) => request(url, 'DELETE', data),
+  get: (url, data, options) => request(url, 'GET', data, options),
+  post: (url, data, options) => request(url, 'POST', data, options),
+  put: (url, data, options) => request(url, 'PUT', data, options),
+  del: (url, data, options) => request(url, 'DELETE', data, options),
 };
